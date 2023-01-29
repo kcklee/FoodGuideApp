@@ -30,5 +30,5 @@ would let me keep track of all these places as soon as I know about them.
 places I've already eaten at (and how many times)
 - As a user, I want to be able to select a food location in my food guide and view details about it
 - As a user, I want to be able to select a food location in my food guide and rate whether I would go
-back or not.
+back or not
 
