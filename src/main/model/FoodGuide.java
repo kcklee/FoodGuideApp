@@ -1,23 +1,17 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Represents a collection of food locations to try
 public class FoodGuide {
-
+    
     private List<FoodLocation> foodLocations;
 
     // TODO: fill in specifications
     // EXECUTES: create FoodGuide object
     public FoodGuide() {
 
-    }
-
-    // TODO: fill in specifications
-    // REQUIRES: foodLocations contains the food location with the given name
-    // EXECUTES: returns the food location with given name
-    public FoodLocation retrieve(String name) {
-        return null;
     }
 
     // TODO: fill in specifications
@@ -29,18 +23,24 @@ public class FoodGuide {
 
     }
 
+
     // TODO: fill in specifications
     // REQUIRES: foodLocations contains the given food location with given name
     // MODIFIES: this
-    // EXECUTES: removes the food location with given name from foodLocations
+    // EXECUTES: removes the food location withx given name from foodLocations
     //           return true if successful removal, else return false
-    public boolean remove(String name) {
+    public boolean remove(FoodLocation fl) {
         return false;
 
     }
 
-    // TODO: fill in specifications
 
+    // TODO: fill in specifications
+    // REQUIRES: foodLocations contains the food location with the given name
+    // EXECUTES: returns the food location with given name
+    public FoodLocation retrieve(String name) {
+        return null;
+    }
 
     // EXECUTES: returns size of FoodGuide
     public int size() {
@@ -54,17 +54,5 @@ public class FoodGuide {
     public boolean contains(FoodLocation fl) {
         return false;
     }
-
-
-    // TODO: fill in specifications
-    // EXECUTES: prints all the food locations that have already been tried
-    public void printAlreadyTried() {
-    }
-
-    // TODO: fill in specifications
-    // EXECUTES: prints all the food locations in the food guide
-    public void printAll() {
-    }
-
 
 }

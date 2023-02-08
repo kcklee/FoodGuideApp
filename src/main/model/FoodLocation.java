@@ -11,22 +11,14 @@ public class FoodLocation {
 
     // TODO: fill in specifications
 
+    // REQUIRES: name is non-zero length
     // EXECUTES: construct a FoodLocation object
 
-    public FoodLocation() {
+    public FoodLocation(String name) {
 
     }
 
     // setters
-
-    // TODO: fill in specifications
-    // REQUIRES: name is non-zero length
-    // MODIFIES: this
-    // EXECUTES: set the name of the FoodLocation object
-
-    public void setName(String name) {
-
-    }
 
     // TODO: fill in specifications
     // REQUIRES: neighbourhood is non-zero length
