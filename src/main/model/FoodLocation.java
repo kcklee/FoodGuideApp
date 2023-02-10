@@ -7,15 +7,18 @@ public class FoodLocation {
     private String neighbourhood;
     private String type;
     private String website;
-    private int rating;
+    private boolean haveVisited;
 
     // TODO: fill in specifications
 
     // REQUIRES: name is non-zero length
-    // EXECUTES: construct a FoodLocation object
+    // EFFECTS: construct a FoodLocation object
 
-    public FoodLocation(String name) {
-
+    public FoodLocation(String name, String neighbourhood, String type, String website) {
+        this.name = name;
+        this.neighbourhood = neighbourhood;
+        this.type = type;
+        this.website = website;
     }
 
     // setters
@@ -23,36 +26,40 @@ public class FoodLocation {
     // TODO: fill in specifications
     // REQUIRES: neighbourhood is non-zero length
     // MODIFIES: this
-    // EXECUTES: set the neighbourhood of the FoodLocation object
+    // EFFECTS: set the neighbourhood of the FoodLocation object
 
     public void setNeighbourhood(String neighbourhood) {
+        this.neighbourhood = neighbourhood;
 
     }
 
     // TODO: fill in specifications
     // REQUIRES: type is non-zero length
     // MODIFIES: this
-    // EXECUTES: set the type of the FoodLocation object
+    // EFFECTS: set the type of the FoodLocation object
 
     public void setType(String type) {
+        this.type = type;
 
     }
 
     // TODO: fill in specifications
     // REQUIRES: website is non-zero length
     // MODIFIES: this
-    // EXECUTES: set the website of the FoodLocation object
+    // EFFECTS: set the website of the FoodLocation object
 
     public void setWebsite(String website) {
+        this.website = website;
 
     }
 
     // TODO: fill in specifications
-    // REQUIRES: 0 <= rating <= 10
-    // MODIFIES: this
-    // EXECUTES: set the rating of the FoodLocation object
 
-    public void setRating(int rating) {
+    // MODIFIES: this
+    // EFFECTS: set whether the food location has been visited already
+
+    public void setHaveVisited(boolean haveVisited) {
+        this.haveVisited = haveVisited;
 
     }
 
@@ -62,38 +69,38 @@ public class FoodLocation {
 
     // TODO: fill in specifications
 
-    // EXECUTES: get name of the FoodLocation object
+    // EFFECTS: get name of the FoodLocation object
 
     public String getName() {
-        return null;
+        return this.name;
 
     }
 
     // TODO: fill in specifications
-    // EXECUTES: get neighbourhood of the FoodLocation object
+    // EFFECTS: get neighbourhood of the FoodLocation object
 
     public String getNeighborhood() {
-        return null;
+        return this.neighbourhood;
     }
 
     // TODO: fill in specifications
-    // EXECUTES: get type of the FoodLocation object
+    // EFFECTS: get type of the FoodLocation object
 
     public String getType() {
-        return null;
+        return this.type;
     }
 
     // TODO: fill in specifications
-    // EXECUTES: get website of the FoodLocation object
+    // EFFECTS: get website of the FoodLocation object
 
     public String getWebsite() {
-        return null;
+        return this.website;
     }
 
     // TODO: fill in specifications
-    // EXECUTES: get rating of the FoodLocation object
+    // EFFECTS: get status of whether have already visited the FoodLocation object
 
-    public int getRating() {
-        return 0;
+    public boolean getHaveVisited() {
+        return this.haveVisited;
     }
 }

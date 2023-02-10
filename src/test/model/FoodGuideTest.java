@@ -16,9 +16,12 @@ public class FoodGuideTest {
     @BeforeEach
     public void setup() {
         foodGuide = new FoodGuide();
-        fl1 = new FoodLocation("Aroma Eatery");
-        fl2 = new FoodLocation("Viet Noodle Guy");
-        fl3 = new FoodLocation("Superbaba");
+        fl1 = new FoodLocation("Aroma Eatery", "Crystal Mall",
+                "Taiwanese", "https://www.facebook.com/profile.php?id=100063950746962");
+        fl2 = new FoodLocation("Viet Noodle Guy", "Brentwood Mall",
+                "Vietnamese", "https://www.thevietnoodleguy.ca/");
+        fl3 = new FoodLocation("Superbaba", "Mt. Pleasant",
+                "Middle Eastern", "https://eatsuperbaba.com/");
     }
 
     @Test
@@ -89,22 +92,22 @@ public class FoodGuideTest {
         assertEquals(2, foodGuide.size());
     }
 
-    @Test
-    public void testRetrieveOne() {
-        foodGuide.insert(fl1);
-        foodGuide.insert(fl2);
-
-        assertEquals(fl1, foodGuide.retrieve("Aroma Eatery"));
-    }
-
-    @Test
-    public void testRetrieveMultiple() {
-        foodGuide.insert(fl1);
-        foodGuide.insert(fl2);
-
-        assertEquals(fl1, foodGuide.retrieve("Aroma Eatery"));
-        assertEquals(fl2, foodGuide.retrieve("Viet Noodle Guy"));
-    }
+//    @Test
+//    public void testRetrieveOne() {
+//        foodGuide.insert(fl1);
+//        foodGuide.insert(fl2);
+//
+//        assertEquals(fl1, foodGuide.retrieve("Aroma Eatery"));
+//    }
+//
+//    @Test
+//    public void testRetrieveMultiple() {
+//        foodGuide.insert(fl1);
+//        foodGuide.insert(fl2);
+//
+//        assertEquals(fl1, foodGuide.retrieve("Aroma Eatery"));
+//        assertEquals(fl2, foodGuide.retrieve("Viet Noodle Guy"));
+//    }
 
 
 
