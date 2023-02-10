@@ -3,7 +3,6 @@ package ui;
 import model.FoodGuide;
 import model.FoodLocation;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 // Food guide application
@@ -83,57 +82,56 @@ public class FoodGuideApp {
     // EFFECTS: displays the names of the food locations and the total number of food locations
     // using code adapted from AccountNotRobust starter
     private void viewFoodLocations() {
-        System.out.println("There are " + fg.size() + " locations: ");
-        for (FoodLocation fl : fg.getFoodLocations()) {
-            System.out.println(fl.getName());
+        while (true) {
+            System.out.println("There are " + fg.size() + " locations: ");
+            for (FoodLocation fl : fg.getFoodLocations()) {
+                System.out.println(fl.getName());
+            }
+
+            System.out.println("Enter the name of the food location to get more details");
+//        System.out.println("To go back to menu, type back");
+
+//        if (Objects.equals(input.next(), "back")) {
+//
+//        }
+            FoodLocation selected = selectFoodLocation();
+            if (selected == null) {
+                System.out.println("invalid");
+                break;
+            } else {
+                printDetails(selected);
+                break;
+            }
         }
 
-        System.out.println("Enter the name of the food location to get more details");
-//        System.out.println("To go back to menu, press any key");
-//
-//        String nextStep = input.next();
-
-//        if (!Objects.equals(nextStep, "back")) {
-        printDetails();
     }
-//    }
 
     // TODO
-    // REQUIRES:
+    // REQUIRES: selected is not null
     // MODIFIES:
     // EFFECTS:
     // using code adapted from AccountNotRobust starter
-    private void printDetails() {
-        // put quit here, return back to menu
-
-        FoodLocation selected = selectFoodLocation();
-
-        if (selected == null) {
-            System.out.println("Location can't be found");
-            viewFoodLocations();
-        } else {
+    private void printDetails(FoodLocation selected) {
             System.out.println("Here are the details of " + selected.getName());
             System.out.println("\t Neighborhood: " + selected.getNeighborhood());
             System.out.println("\t Type: " + selected.getType());
             System.out.println("\t Website: " + selected.getWebsite());
             System.out.println("\t Already visited?: " + selected.getHaveVisited());
-        }
 
         System.out.println("To update the visit status, type update");
         System.out.println("To remove the food location, type remove");
         System.out.println("To go back to menu, press any key");
 
-        String update = input.next();
+        String nextStep = input.next();
 
-        if (Objects.equals(update, "update")) {
-            updateVisitStatus(selected);
+        if (nextStep.equals("update")) {
+            makeVisited(selected);
         } else {
-            if (Objects.equals(update, "remove")) {
+            if (nextStep.equals("remove")) {
                 removeFoodLocation(selected);
             }
         }
     }
-
     // TODO
     // REQUIRES:
     // MODIFIES:
@@ -177,7 +175,11 @@ public class FoodGuideApp {
 
         FoodLocation fl = new FoodLocation(name, neighbourhood, type, website);
 
-        fg.insert(fl);
+        if (!fg.insert(fl)) {
+            System.out.println("Already in the list, enter a new location");
+            addFoodLocation();
+        }
+        System.out.println("Location added!");
     }
 
     //TODO
@@ -199,7 +201,7 @@ public class FoodGuideApp {
     // EFFECTS:
     // using code adapted from AccountNotRobust starter
 
-    private void updateVisitStatus(FoodLocation selected) {
+    private void makeVisited(FoodLocation selected) {
         selected.setHaveVisited(true);
         System.out.println(selected.getName() + " has been updated!");
     }

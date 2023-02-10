@@ -34,7 +34,6 @@ public class FoodGuideTest {
         assertTrue(foodGuide.insert(fl1));
         assertEquals(1, foodGuide.size());
         assertTrue(foodGuide.contains(fl1));
-
     }
 
     @Test
@@ -63,10 +62,12 @@ public class FoodGuideTest {
 
         assertTrue(foodGuide.contains(fl1));
         assertTrue(foodGuide.contains(fl2));
+        assertEquals(2, foodGuide.size());
 
         assertTrue(foodGuide.remove(fl1));
         assertFalse(foodGuide.contains(fl1));
         assertTrue(foodGuide.contains(fl2));
+        assertEquals(1, foodGuide.size());
     }
 
     @Test

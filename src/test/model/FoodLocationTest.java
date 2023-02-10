@@ -21,6 +21,8 @@ public class FoodLocationTest {
     @Test
     public void testConstructor() {
         assertEquals("Aroma Eatery", fl1.getName());
-        assertEquals("Viet Noodle Guy", fl2.getName());
+        assertEquals("Crystal Mall", fl1.getNeighborhood());
+        assertEquals("Taiwanese", fl1.getType());
+        assertEquals("https://www.facebook.com/profile.php?id=100063950746962", fl1.getWebsite());
     }
 }

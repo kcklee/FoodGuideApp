@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 // Represents a collection of food locations to try
 public class FoodGuide {
@@ -10,18 +9,19 @@ public class FoodGuide {
     private List<FoodLocation> foodLocations;
 
     // TODO: fill in specifications
-    // EFFECTS: create FoodGuide object
+    // EFFECTS: construct a FoodGuide with no food locations added
     public FoodGuide() {
         foodLocations = new ArrayList<>();
     }
 
     // TODO: fill in specifications
     // MODIFIES: this
-    // EFFECTS: adds the given food location into foodLocations, given the food location is not already in the list
-    //           return true if successful insertion, else return false
+    // EFFECTS: adds the food location into foodLocations,
+    //          given a food location with the same name isn't already in the list
+    //          return true if successful insertion, else return false
     public boolean insert(FoodLocation foodLocation) {
         for (FoodLocation fl : foodLocations) {
-            if (Objects.equals(fl.getName(), foodLocation.getName())) {
+            if (fl.getName().equals(foodLocation.getName())) {
                 return false;
             }
         }
