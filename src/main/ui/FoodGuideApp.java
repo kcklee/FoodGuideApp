@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.BackException;
 import model.FoodGuide;
 import model.FoodLocation;
 
@@ -89,18 +90,19 @@ public class FoodGuideApp {
             }
 
             System.out.println("Enter the name of the food location to get more details");
-//        System.out.println("To go back to menu, type back");
+            System.out.println("Or enter 'back' to return to menu");
 
-//        if (Objects.equals(input.next(), "back")) {
-//
-//        }
-            FoodLocation selected = selectFoodLocation();
-            if (selected == null) {
-                System.out.println("invalid");
+            FoodLocation selected;
+            try {
+                selected = selectFoodLocation();
+            } catch (BackException e) {
                 break;
+            }
+
+            if (selected == null) {
+                System.out.println("Location not found, enter another one \n");
             } else {
                 printDetails(selected);
-                break;
             }
         }
 
@@ -112,19 +114,19 @@ public class FoodGuideApp {
     // EFFECTS:
     // using code adapted from AccountNotRobust starter
     private void printDetails(FoodLocation selected) {
-            System.out.println("Here are the details of " + selected.getName());
-            System.out.println("\t Neighborhood: " + selected.getNeighborhood());
-            System.out.println("\t Type: " + selected.getType());
-            System.out.println("\t Website: " + selected.getWebsite());
-            System.out.println("\t Already visited?: " + selected.getHaveVisited());
+        System.out.println("Here are the details of " + selected.getName());
+        System.out.println("\t Neighborhood: " + selected.getNeighborhood());
+        System.out.println("\t Type: " + selected.getType());
+        System.out.println("\t Website: " + selected.getWebsite());
+        System.out.println("\t Already visited?: " + selected.getHaveVisited());
 
-        System.out.println("To update the visit status, type update");
-        System.out.println("To remove the food location, type remove");
-        System.out.println("To go back to menu, press any key");
+        System.out.println("To mark as visited, enter 'visited'");
+        System.out.println("To remove the food location, enter 'remove'");
+        System.out.println("To go back to the list of food locations, press any key");
 
         String nextStep = input.next();
 
-        if (nextStep.equals("update")) {
+        if (nextStep.equals("visited")) {
             makeVisited(selected);
         } else {
             if (nextStep.equals("remove")) {
@@ -132,16 +134,21 @@ public class FoodGuideApp {
             }
         }
     }
+
     // TODO
-    // REQUIRES:
+    // REQUIRES: none cause of throws back exception?
     // MODIFIES:
     // EFFECTS:
     // using code adapted from AccountNotRobust starter
-    private FoodLocation selectFoodLocation() {
+    private FoodLocation selectFoodLocation() throws BackException {
         String selection = "";
 
         selection = input.next();
         selection = selection.toLowerCase();
+
+        if (selection.equals("back")) {
+            throw new BackException();
+        }
 
         for (FoodLocation fl : fg.getFoodLocations()) {
             if (fl.getName().toLowerCase().equals(selection)) {
@@ -153,33 +160,40 @@ public class FoodGuideApp {
     }
 
     // TODO
-    // REQUIRES: given food location not already in FoodGuide
+    // REQUIRES: given food location not already in FoodGuide, no name called 'back'
     // MODIFIES:
     // EFFECTS:
     private void addFoodLocation() {
-        System.out.println("Enter the name of the food location you want to add");
+        while (true) {
+            System.out.println("Enter the name of the food location you want to add");
+            System.out.println("Or enter 'back' to return to the menu");
 
-        String name = input.next();
+            String name = input.next();
 
-        System.out.println("Enter the neighbourhood that the food location is in");
+            if (name.equals("back")) {
+                break;
+            }
 
-        String neighbourhood = input.next();
+            System.out.println("Enter the neighbourhood that the food location is in");
 
-        System.out.println("Enter the type of food that the food location serves");
+            String neighbourhood = input.next();
 
-        String type = input.next();
+            System.out.println("Enter the type of food that the food location serves");
 
-        System.out.println("Enter the website of the food location");
+            String type = input.next();
 
-        String website = input.next();
+            System.out.println("Enter the website of the food location");
 
-        FoodLocation fl = new FoodLocation(name, neighbourhood, type, website);
+            String website = input.next();
 
-        if (!fg.insert(fl)) {
-            System.out.println("Already in the list, enter a new location");
-            addFoodLocation();
+            FoodLocation fl = new FoodLocation(name, neighbourhood, type, website);
+
+            if (fg.insert(fl)) {
+                System.out.println("Location added!");
+                break;
+            }
+            System.out.println("Already in the list, enter a new location \n");
         }
-        System.out.println("Location added!");
     }
 
     //TODO
