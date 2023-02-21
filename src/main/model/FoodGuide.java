@@ -31,11 +31,9 @@ public class FoodGuide {
 
 
     // TODO: fill in specifications
-    // REQUIRES:
     // MODIFIES: this
     // EFFECTS: removes the given food location from foodLocations
     //          return true if successful removal, else return false
-
     public boolean remove(FoodLocation foodLocation) {
         for (FoodLocation fl : foodLocations) {
             if (fl.equals(foodLocation)) {
@@ -46,42 +44,20 @@ public class FoodGuide {
         return false;
     }
 
-//    public boolean remove(String name) {
-////        for (FoodLocation fl : foodLocations) {
-////            if (fl.getName().equals(name)) {
-////                foodLocations.remove(fl);
-////                return true;
-////            }
-////        }
-////        return false;
-//    }
-
-    ;
-
-//}
-
-
-//    // TODO: fill in specifications
-//    // REQUIRES: foodLocations contains the food location with the given name
-//    // EFFECTS: returns the food location with given name
-//    public FoodLocation retrieve(String name) {
-//        return null;
-//    }
-
     // EFFECTS: returns size of FoodGuide
     public int size() {
         return foodLocations.size();
     }
 
     // TODO: fill in specifications
-
-
-    // EFFECTS: returns true if list contains the given food location, else false
+    // EFFECTS: returns true if FoodGuide contains the given food location, else false
     public boolean contains(FoodLocation fl) {
         return foodLocations.contains(fl);
     }
 
     // getters
+
+    // EFFECTS: returns the list of food locations in FoodGuide
     public List<FoodLocation> getFoodLocations() {
         return foodLocations;
     }

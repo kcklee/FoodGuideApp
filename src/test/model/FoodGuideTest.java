@@ -92,24 +92,4 @@ public class FoodGuideTest {
         assertFalse(foodGuide.remove(fl2));
         assertEquals(2, foodGuide.size());
     }
-
-//    @Test
-//    public void testRetrieveOne() {
-//        foodGuide.insert(fl1);
-//        foodGuide.insert(fl2);
-//
-//        assertEquals(fl1, foodGuide.retrieve("Aroma Eatery"));
-//    }
-//
-//    @Test
-//    public void testRetrieveMultiple() {
-//        foodGuide.insert(fl1);
-//        foodGuide.insert(fl2);
-//
-//        assertEquals(fl1, foodGuide.retrieve("Aroma Eatery"));
-//        assertEquals(fl2, foodGuide.retrieve("Viet Noodle Guy"));
-//    }
-
-
-
 }

@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.DuplicateNameException;
 import exceptions.BackException;
 import model.FoodGuide;
 import model.FoodLocation;
@@ -7,11 +8,14 @@ import model.FoodLocation;
 import java.util.Scanner;
 
 // Food guide application
+// using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp where indicated
 public class FoodGuideApp {
+
     private FoodGuide fg;
     private Scanner input;
 
     // EFFECTS: run the food guide app
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     public FoodGuideApp() {
         runFoodGuide();
     }
@@ -19,7 +23,7 @@ public class FoodGuideApp {
     // MODIFIES: this
     // EFFECTS: processes user input
 
-    // using code adapted from AccountNotRobust starter
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void runFoodGuide() {
         boolean keepGoing = true;
         String command = null;
@@ -44,7 +48,7 @@ public class FoodGuideApp {
     // MODIFIES: this
     // EFFECTS: processes user command
 
-    // using code adapted from AccountNotRobust starter
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void processCommand(String command) {
         if (command.equals("view")) {
             viewFoodLocations();
@@ -58,7 +62,7 @@ public class FoodGuideApp {
     // MODIFIES: this
     // EFFECTS: initializes food guides
 
-    // using code adapted from AccountNotRobust starter
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void init() {
         fg = new FoodGuide();
         input = new Scanner(System.in);
@@ -66,11 +70,9 @@ public class FoodGuideApp {
     }
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
-    // using code adapted from AccountNotRobust starter
+    // EFFECTS: displays menu of options to user
 
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tView");
@@ -78,21 +80,23 @@ public class FoodGuideApp {
         System.out.println("\tQuit");
     }
 
-    // REQUIRES:
-    // MODIFIES:
     // EFFECTS: displays the names of the food locations and the total number of food locations
-    // using code adapted from AccountNotRobust starter
+    //          display details if food location's name is given when prompted
+    //          goes back to menu if 'back' is entered when prompted
+
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void viewFoodLocations() {
         while (true) {
-            System.out.println("There are " + fg.size() + " locations: ");
+            System.out.println("Number of locations: " + fg.size());
             for (FoodLocation fl : fg.getFoodLocations()) {
                 System.out.println(fl.getName());
             }
 
-            System.out.println("Enter the name of the food location to get more details");
+            System.out.println("\nEnter a food location's name to get more details");
             System.out.println("Or enter 'back' to return to menu");
 
             FoodLocation selected;
+
             try {
                 selected = selectFoodLocation();
             } catch (BackException e) {
@@ -110,9 +114,12 @@ public class FoodGuideApp {
 
     // TODO
     // REQUIRES: selected is not null
-    // MODIFIES:
-    // EFFECTS:
-    // using code adapted from AccountNotRobust starter
+    // MODIFIES: this
+    // EFFECTS: prints details of given food location
+    //          marks food location as visited if 'visited' is entered when prompted
+    //          removes food location if 'remove' is entered when prompted
+
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void printDetails(FoodLocation selected) {
         System.out.println("Here are the details of " + selected.getName());
         System.out.println("\t Neighborhood: " + selected.getNeighborhood());
@@ -120,7 +127,7 @@ public class FoodGuideApp {
         System.out.println("\t Website: " + selected.getWebsite());
         System.out.println("\t Already visited?: " + selected.getHaveVisited());
 
-        System.out.println("To mark as visited, enter 'visited'");
+        System.out.println("\nTo mark as visited, enter 'visited'");
         System.out.println("To remove the food location, enter 'remove'");
         System.out.println("To go back to the list of food locations, press any key");
 
@@ -136,10 +143,10 @@ public class FoodGuideApp {
     }
 
     // TODO
-    // REQUIRES: none cause of throws back exception?
-    // MODIFIES:
-    // EFFECTS:
-    // using code adapted from AccountNotRobust starter
+    // EFFECTS: return food location if given input matches a food location's name
+    //          else return null
+
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private FoodLocation selectFoodLocation() throws BackException {
         String selection = "";
 
@@ -160,17 +167,20 @@ public class FoodGuideApp {
     }
 
     // TODO
-    // REQUIRES: given food location not already in FoodGuide, no name called 'back'
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: prompts user to enter details of a food location and add the food location into FoodGuide
     private void addFoodLocation() {
         while (true) {
-            System.out.println("Enter the name of the food location you want to add");
-            System.out.println("Or enter 'back' to return to the menu");
+            System.out.println("Enter the name of food location you want to add \nOr enter 'back' to return to menu");
 
-            String name = input.next();
+            String name;
 
-            if (name.equals("back")) {
+            try {
+                name = getInputName();
+            } catch (BackException e) {
+                break;
+            } catch (DuplicateNameException e) {
+                System.out.println("Name already exists, try again");
                 break;
             }
 
@@ -192,32 +202,46 @@ public class FoodGuideApp {
                 System.out.println("Location added!");
                 break;
             }
-            System.out.println("Already in the list, enter a new location \n");
         }
     }
 
-    //TODO
+    // TODO
+    // EFFECTS: returns name that user inputs
+    private String getInputName() throws BackException, DuplicateNameException {
+        String name = input.next();
+
+        if (name.equals("back")) {
+            throw new BackException();
+        } else if (isDuplicateName(name)) {
+            throw new DuplicateNameException();
+        }
+
+        return name;
+    }
+
+    // EFFECTS: returns true if food location name already exists in FoodGuide
+    //          else returns false
+    private boolean isDuplicateName(String name) {
+        for (FoodLocation fl : fg.getFoodLocations()) {
+            return fl.getName().toLowerCase().equals(name);
+        }
+        return false;
+    }
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
-    // using code adapted from AccountNotRobust starter
-
+    // MODIFIES: this
+    // EFFECTS: removes food location from FoodGuide
     private void removeFoodLocation(FoodLocation selected) {
         fg.remove(selected);
-        System.out.println(selected.getName() + " has been removed!");
+        System.out.println(selected.getName() + " has been removed!\n");
     }
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
-    // using code adapted from AccountNotRobust starter
-
+    // REQUIRES: selected is not null
+    // MODIFIES: this
+    // EFFECTS: sets haveVisited to true
     private void makeVisited(FoodLocation selected) {
         selected.setHaveVisited(true);
-        System.out.println(selected.getName() + " has been updated!");
+        System.out.println(selected.getName() + " has been updated!\n");
     }
-
 }
