@@ -44,8 +44,8 @@ public class FoodGuide {
         return false;
     }
 
-    // EFFECTS: returns size of FoodGuide
-    public int size() {
+    // EFFECTS: returns number of food locations in FoodGuide
+    public int length() {
         return foodLocations.size();
     }
 

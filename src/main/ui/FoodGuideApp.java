@@ -22,7 +22,6 @@ public class FoodGuideApp {
 
     // MODIFIES: this
     // EFFECTS: processes user input
-
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void runFoodGuide() {
         boolean keepGoing = true;
@@ -47,7 +46,6 @@ public class FoodGuideApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void processCommand(String command) {
         if (command.equals("view")) {
@@ -61,7 +59,6 @@ public class FoodGuideApp {
 
     // MODIFIES: this
     // EFFECTS: initializes food guides
-
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void init() {
         fg = new FoodGuide();
@@ -71,7 +68,6 @@ public class FoodGuideApp {
 
     // TODO
     // EFFECTS: displays menu of options to user
-
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void displayMenu() {
         System.out.println("\nSelect from:");
@@ -82,12 +78,13 @@ public class FoodGuideApp {
 
     // EFFECTS: displays the names of the food locations and the total number of food locations
     //          display details if food location's name is given when prompted
+    //          update visit status of food location
+    //          or remove food location depending on user input when prompted
     //          goes back to menu if 'back' is entered when prompted
-
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void viewFoodLocations() {
         while (true) {
-            System.out.println("Number of locations: " + fg.size());
+            System.out.println("Number of locations: " + fg.length());
             for (FoodLocation fl : fg.getFoodLocations()) {
                 System.out.println(fl.getName());
             }
@@ -107,6 +104,7 @@ public class FoodGuideApp {
                 System.out.println("Location not found, enter another one \n");
             } else {
                 printDetails(selected);
+                visitOrRemove(selected);
             }
         }
 
@@ -116,9 +114,6 @@ public class FoodGuideApp {
     // REQUIRES: selected is not null
     // MODIFIES: this
     // EFFECTS: prints details of given food location
-    //          marks food location as visited if 'visited' is entered when prompted
-    //          removes food location if 'remove' is entered when prompted
-
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void printDetails(FoodLocation selected) {
         System.out.println("Here are the details of " + selected.getName());
@@ -126,7 +121,14 @@ public class FoodGuideApp {
         System.out.println("\t Type: " + selected.getType());
         System.out.println("\t Website: " + selected.getWebsite());
         System.out.println("\t Already visited?: " + selected.getHaveVisited());
+    }
 
+    // TODO
+    // REQUIRES: selected is not null
+    // MODIFIES: this
+    // EFFECTS: marks food location as visited if 'visited' is entered when prompted
+    //          removes food location if 'remove' is entered when prompted
+    private void visitOrRemove(FoodLocation selected) {
         System.out.println("\nTo mark as visited, enter 'visited'");
         System.out.println("To remove the food location, enter 'remove'");
         System.out.println("To go back to the list of food locations, press any key");
@@ -145,7 +147,6 @@ public class FoodGuideApp {
     // TODO
     // EFFECTS: return food location if given input matches a food location's name
     //          else return null
-
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private FoodLocation selectFoodLocation() throws BackException {
         String selection = "";
@@ -168,7 +169,7 @@ public class FoodGuideApp {
 
     // TODO
     // MODIFIES: this
-    // EFFECTS: prompts user to enter details of a food location and add the food location into FoodGuide
+    // EFFECTS: prompts user to enter details of a food location to add the food location into FoodGuide
     private void addFoodLocation() {
         while (true) {
             System.out.println("Enter the name of food location you want to add \nOr enter 'back' to return to menu");
@@ -176,7 +177,7 @@ public class FoodGuideApp {
             String name;
 
             try {
-                name = getInputName();
+                name = getInputNameToAdd();
             } catch (BackException e) {
                 break;
             } catch (DuplicateNameException e) {
@@ -206,8 +207,9 @@ public class FoodGuideApp {
     }
 
     // TODO
+
     // EFFECTS: returns name that user inputs
-    private String getInputName() throws BackException, DuplicateNameException {
+    private String getInputNameToAdd() throws BackException, DuplicateNameException {
         String name = input.next();
 
         if (name.equals("back")) {

@@ -24,5 +24,30 @@ public class FoodLocationTest {
         assertEquals("Crystal Mall", fl1.getNeighborhood());
         assertEquals("Taiwanese", fl1.getType());
         assertEquals("https://www.facebook.com/profile.php?id=100063950746962", fl1.getWebsite());
+        assertFalse(fl1.getHaveVisited());
+
+        assertEquals("Viet Noodle Guy", fl2.getName());
+        assertEquals("Brentwood Mall", fl2.getNeighborhood());
+        assertEquals("Vietnamese", fl2.getType());
+        assertEquals("https://www.thevietnoodleguy.ca/", fl2.getWebsite());
+        assertFalse(fl2.getHaveVisited());
+    }
+
+    @Test
+    public void testSetHaveVisitedOnce() {
+        assertFalse(fl1.getHaveVisited());
+        fl1.setHaveVisited(true);
+        assertTrue(fl1.getHaveVisited());
+    }
+
+    @Test
+    public void testSetHaveVisitedMultipleTimes() {
+        assertFalse(fl1.getHaveVisited());
+
+        fl1.setHaveVisited(true);
+        assertTrue(fl1.getHaveVisited());
+
+        fl1.setHaveVisited(true);
+        assertTrue(fl1.getHaveVisited());
     }
 }
