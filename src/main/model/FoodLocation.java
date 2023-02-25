@@ -1,6 +1,7 @@
 package model;
 
-// Represents a food location that has a name, neighbourhood, type, website and whether it has been visited or not
+// Represents a food location that has a name, neighbourhood, type, website
+// and indicates whether it has been visited or not
 public class FoodLocation {
 
     private String name;
@@ -9,10 +10,8 @@ public class FoodLocation {
     private String website;
     private boolean haveVisited;
 
-    // TODO: fill in specifications
-
-    // REQUIRES: name is non-zero length
-    // EFFECTS: construct a FoodLocation
+    // REQUIRES: name, neighbourhood, type, and website are non-zero length
+    // EFFECTS: constructs a food location with given name, neighbourhood, type and website
     public FoodLocation(String name, String neighbourhood, String type, String website) {
         this.name = name;
         this.neighbourhood = neighbourhood;
@@ -21,8 +20,6 @@ public class FoodLocation {
     }
 
     // setters
-
-    // TODO: fill in specifications
 
     // MODIFIES: this
     // EFFECTS: set whether the food location has been visited already
@@ -33,34 +30,27 @@ public class FoodLocation {
 
     // getters
 
-    // TODO: fill in specifications
-
-    // EFFECTS: get name of the FoodLocation object
+    // EFFECTS: get name of the food location
     public String getName() {
         return this.name;
-
     }
 
-    // TODO: fill in specifications
-    // EFFECTS: get neighbourhood of the FoodLocation object
+    // EFFECTS: get neighbourhood of the food location
     public String getNeighborhood() {
         return this.neighbourhood;
     }
 
-    // TODO: fill in specifications
-    // EFFECTS: get type of the FoodLocation object
+    // EFFECTS: get type of the food location
     public String getType() {
         return this.type;
     }
 
-    // TODO: fill in specifications
-    // EFFECTS: get website of the FoodLocation object
+    // EFFECTS: get website of the food location
     public String getWebsite() {
         return this.website;
     }
 
-    // TODO: fill in specifications
-    // EFFECTS: get status of whether have already visited the FoodLocation object
+    // EFFECTS: get status of whether or not the food location has already been visited
     public boolean getHaveVisited() {
         return this.haveVisited;
     }

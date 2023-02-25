@@ -6,7 +6,7 @@
 
 My food guide application will keep track of food locations that a user wants to try out. It lets a user enter food
 locations, view information about them, and rate them. Possible features include listing all places that 
-they want to try; showing food locations with their website/menu link; marking the food locations they've tried.
+they want to try; showing food locations and their details; marking the food locations they've tried.
 
 ***Who will use it?***
 
@@ -29,8 +29,11 @@ would let me keep track of all these places as soon as I know about them.
 - As a user, I want to be able to mark a place as already tried
 - As a user, I want to be able to see the number of food locations in my food guide 
 
-**User stories for my food guide application that I will attempt if I have time:**
+**User stories for my food guide application that I will attempt in the future if I have time (not yet implemented):**
 - As a user, I want to see the number of places I've already eaten at (and how many times)
 - As a user, I want to be able to select a food location in my food guide and rate whether I would go
 back or not
 
+## Notes
+
+***My UI package was adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp where indicated***
