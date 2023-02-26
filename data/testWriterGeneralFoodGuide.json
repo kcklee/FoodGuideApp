@@ -1,0 +1,19 @@
+{
+    "name": "Kevin's Food Guide",
+    "foodLocations": [
+        {
+            "website": "https://www.facebook.com/profile.php?id=100063950746962",
+            "neighbourhood": "Crystal Mall",
+            "name": "Aroma Eatery",
+            "haveVisited": false,
+            "type": "Taiwanese"
+        },
+        {
+            "website": "https://www.thevietnoodleguy.ca/",
+            "neighbourhood": "Brentwood Mall",
+            "name": "Viet Noodle Guy",
+            "haveVisited": false,
+            "type": "Vietnamese"
+        }
+    ]
+}

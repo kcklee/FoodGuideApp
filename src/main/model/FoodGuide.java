@@ -61,6 +61,7 @@ public class FoodGuide implements Writable {
     // REQUIRES
     // MODIFIES
     // EFFECTS
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -71,6 +72,7 @@ public class FoodGuide implements Writable {
 
     // TODO
     // EFFECTS: returns things in this workroom as a JSON array
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private JSONArray foodLocationsToJson() {
         JSONArray jsonArray = new JSONArray();
 
