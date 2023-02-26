@@ -1,15 +1,22 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a collection of food locations to try
-public class FoodGuide {
+public class FoodGuide implements Writable {
+
+    private String name;
 
     private List<FoodLocation> foodLocations;
 
     // EFFECTS: constructs a food guide with no food locations added
-    public FoodGuide() {
+    public FoodGuide(String name) {
+        this.name = name;
         foodLocations = new ArrayList<>();
     }
 
@@ -50,11 +57,40 @@ public class FoodGuide {
         return foodLocations.contains(fl);
     }
 
+    // TODO
+    // REQUIRES
+    // MODIFIES
+    // EFFECTS
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("foodLocations", foodLocationsToJson());
+        return json;
+    }
+
+    // TODO
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray foodLocationsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (FoodLocation fl : foodLocations) {
+            jsonArray.put(fl.toJson());
+        }
+
+        return jsonArray;
+    }
+
     // getters
 
     // EFFECTS: returns the list of food locations in the food guide
     public List<FoodLocation> getFoodLocations() {
         return foodLocations;
+    }
+
+    // TODO
+    public String getName() {
+        return this.name;
     }
 
 }

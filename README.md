@@ -29,6 +29,9 @@ would let me keep track of all these places as soon as I know about them.
 - As a user, I want to be able to mark a place as already tried
 - As a user, I want to be able to see the number of food locations in my food guide 
 
+- As a user, I want to have the option to save the entire state of my food guide to file
+- As a user, I want to have the option to reload from that state from file and resume exactly where I left off 
+
 **User stories for my food guide application that I will attempt in the future if I have time (not yet implemented):**
 - As a user, I want to see the number of places I've already eaten at (and how many times)
 - As a user, I want to be able to select a food location in my food guide and rate whether I would go

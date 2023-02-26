@@ -17,13 +17,16 @@ public class FoodGuideTest {
 
     @BeforeEach
     public void setup() {
-        foodGuide = new FoodGuide();
+        foodGuide = new FoodGuide("Kevin's Food Guide");
         fl1 = new FoodLocation("Aroma Eatery", "Crystal Mall",
-                "Taiwanese", "https://www.facebook.com/profile.php?id=100063950746962");
+                "Taiwanese", "https://www.facebook.com/profile.php?id=100063950746962",
+                false);
         fl2 = new FoodLocation("Viet Noodle Guy", "Brentwood Mall",
-                "Vietnamese", "https://www.thevietnoodleguy.ca/");
+                "Vietnamese", "https://www.thevietnoodleguy.ca/",
+                false);
         fl3 = new FoodLocation("Superbaba", "Mt. Pleasant",
-                "Middle Eastern", "https://eatsuperbaba.com/");
+                "Middle Eastern", "https://eatsuperbaba.com/",
+                false);
     }
 
     @Test

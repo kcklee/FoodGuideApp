@@ -13,9 +13,11 @@ public class FoodLocationTest {
     @BeforeEach
     public void setup() {
         fl1 = new FoodLocation("Aroma Eatery", "Crystal Mall",
-                "Taiwanese", "https://www.facebook.com/profile.php?id=100063950746962");
+                "Taiwanese", "https://www.facebook.com/profile.php?id=100063950746962",
+                false);
         fl2 = new FoodLocation("Viet Noodle Guy", "Brentwood Mall",
-                "Vietnamese", "https://www.thevietnoodleguy.ca/");
+                "Vietnamese", "https://www.thevietnoodleguy.ca/",
+                false);
     }
 
     @Test

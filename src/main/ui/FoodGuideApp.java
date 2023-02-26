@@ -4,19 +4,33 @@ import exceptions.BackException;
 import exceptions.DuplicateNameException;
 import model.FoodGuide;
 import model.FoodLocation;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // Food guide application
 // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp where indicated
+// and using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
 public class FoodGuideApp {
+    private static final String JSON_STORE = "./data/foodguide.json";
 
     private FoodGuide fg;
     private Scanner input;
 
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
     // EFFECTS: run the food guide app
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
-    public FoodGuideApp() {
+    public FoodGuideApp() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        input.useDelimiter("\n");
+        fg = new FoodGuide("Kevin's Food Guide");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runFoodGuide();
     }
 
@@ -26,8 +40,8 @@ public class FoodGuideApp {
     private void runFoodGuide() {
         boolean keepGoing = true;
         String command = null;
-
-        init();
+        input = new Scanner(System.in);
+        input.useDelimiter("\n");
 
         while (keepGoing) {
             displayMenu();
@@ -52,18 +66,13 @@ public class FoodGuideApp {
             viewFoodLocations();
         } else if (command.equals("add")) {
             addFoodLocation();
+        } else if (command.equals("save")) {
+            saveFoodGuide();
+        } else if (command.equals("load")) {
+            loadFoodGuide();
         } else {
             System.out.println("Not valid, try again...");
         }
-    }
-
-    // MODIFIES: this
-    // EFFECTS: initializes food guides
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
-    private void init() {
-        fg = new FoodGuide();
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
     }
 
     // EFFECTS: displays menu of options to user
@@ -72,6 +81,8 @@ public class FoodGuideApp {
         System.out.println("\nSelect from:");
         System.out.println("\tView");
         System.out.println("\tAdd");
+        System.out.println("\tSave (to save food guide to file)");
+        System.out.println("\tLoad (to load food guide to file)");
         System.out.println("\tQuit");
     }
 
@@ -141,12 +152,39 @@ public class FoodGuideApp {
 
             String website = input.next();
 
-            FoodLocation fl = new FoodLocation(name, neighbourhood, type, website);
+            FoodLocation fl = new FoodLocation(name, neighbourhood, type, website, false);
 
             if (fg.insert(fl)) {
                 System.out.println("Location added!");
                 break;
             }
+        }
+    }
+
+    // TODO
+    // EFFECTS: saves the FoodGuide to file
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    private void saveFoodGuide() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(fg);
+            jsonWriter.close();
+            System.out.println("Saved " + fg.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // TODO
+    // MODIFIES: this
+    // EFFECTS: loads FoodGuide from file
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    private void loadFoodGuide() {
+        try {
+            fg = jsonReader.read();
+            System.out.println("Loaded " + fg.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 
@@ -243,4 +281,5 @@ public class FoodGuideApp {
         selected.setHaveVisited(true);
         System.out.println(selected.getName() + " has been updated!\n");
     }
+
 }

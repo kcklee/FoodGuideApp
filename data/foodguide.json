@@ -1,0 +1,10 @@
+{
+    "name": "Kevin's Food Guide",
+    "foodLocations": [{
+        "website": "website",
+        "neighbourhood": "s",
+        "name": "Aroma Eatery",
+        "haveVisited": true,
+        "type": "Crystal Mall"
+    }]
+}
