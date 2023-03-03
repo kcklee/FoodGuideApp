@@ -1,10 +1,10 @@
 {
     "name": "Kevin's Food Guide",
     "foodLocations": [{
-        "website": "website",
-        "neighbourhood": "s",
-        "name": "Aroma Eatery",
+        "website": "www.sushicali.com",
+        "neighbourhood": "Cambie Broadway",
+        "name": "Sushi California",
         "haveVisited": true,
-        "type": "Crystal Mall"
+        "type": "Sushi"
     }]
 }

@@ -25,9 +25,8 @@ public class FoodGuideApp {
 
     // EFFECTS: run the food guide app
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public FoodGuideApp() throws FileNotFoundException {
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
         fg = new FoodGuide("Kevin's Food Guide");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -37,6 +36,7 @@ public class FoodGuideApp {
     // MODIFIES: this
     // EFFECTS: processes user input
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void runFoodGuide() {
         boolean keepGoing = true;
         String command = null;
@@ -61,6 +61,7 @@ public class FoodGuideApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void processCommand(String command) {
         if (command.equals("view")) {
             viewFoodLocations();
@@ -77,6 +78,7 @@ public class FoodGuideApp {
 
     // EFFECTS: displays menu of options to user
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tView");
@@ -190,6 +192,7 @@ public class FoodGuideApp {
 
     // EFFECTS: return food location if given input matches a food location's name
     //          else return null
+    //          if 'back' is entered, throws BackException
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private FoodLocation selectFoodLocation() throws BackException {
         String selection = "";
@@ -241,6 +244,8 @@ public class FoodGuideApp {
     }
 
     // EFFECTS: returns name that user inputs
+    //          if 'back' is entered, throws BackException
+    //          if a name that already exists is entered, throws DuplicateNameException
     private String getInputNameToAdd() throws BackException, DuplicateNameException {
         String name = input.next();
 
