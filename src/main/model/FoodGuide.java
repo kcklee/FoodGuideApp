@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Represents a collection of food locations to try
+// using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
 public class FoodGuide implements Writable {
 
     private String name;
 
     private List<FoodLocation> foodLocations;
 
-    // EFFECTS: constructs a food guide with no food locations added
+    // EFFECTS: constructs a food guide with a name and no food locations added
     public FoodGuide(String name) {
         this.name = name;
         foodLocations = new ArrayList<>();
@@ -57,10 +58,8 @@ public class FoodGuide implements Writable {
         return foodLocations.contains(fl);
     }
 
-    // TODO
-    // REQUIRES
-    // MODIFIES
-    // EFFECTS
+    // EFFECTS: constructs a JSON Object with the name of the food guide and food locations (as a JSON array)
+    //          and returns the JSON object
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     @Override
     public JSONObject toJson() {
@@ -70,8 +69,7 @@ public class FoodGuide implements Writable {
         return json;
     }
 
-    // TODO
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns food locations in this food guide as a JSON array
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private JSONArray foodLocationsToJson() {
         JSONArray jsonArray = new JSONArray();
@@ -90,7 +88,7 @@ public class FoodGuide implements Writable {
         return foodLocations;
     }
 
-    // TODO
+    // EFFECTS: returns the name of the food guide
     public String getName() {
         return this.name;
     }

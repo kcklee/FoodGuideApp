@@ -23,7 +23,8 @@ public class FoodGuideApp {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
-    // EFFECTS: run the food guide app
+    // EFFECTS: construct FoodGuide and runs the food guide app
+    //          if file can't be found, throws FileNotFoundException
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public FoodGuideApp() throws FileNotFoundException {
@@ -163,7 +164,6 @@ public class FoodGuideApp {
         }
     }
 
-    // TODO
     // EFFECTS: saves the FoodGuide to file
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void saveFoodGuide() {
@@ -177,7 +177,6 @@ public class FoodGuideApp {
         }
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: loads FoodGuide from file
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo

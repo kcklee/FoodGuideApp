@@ -29,7 +29,7 @@ would let me keep track of all these places as soon as I know about them.
 - As a user, I want to be able to mark a place as already tried
 - As a user, I want to be able to see the number of food locations in my food guide 
 
-- As a user, I want to have the option to save the entire state of my food guide to file
+- As a user, I want to have the option to save the entire state of my food guide application to file
 - As a user, I want to have the option to reload from that state from file and resume exactly where I left off 
 
 **User stories for my food guide application that I will attempt in the future if I have time (not yet implemented):**
@@ -39,4 +39,7 @@ back or not
 
 ## Notes
 
-***My UI package was adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp where indicated***
+***My UI package was adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp and***
+***https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated***
+
+***My persistence package was adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo***

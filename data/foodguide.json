@@ -1,10 +1,26 @@
 {
     "name": "Kevin's Food Guide",
-    "foodLocations": [{
-        "website": "www.sushicali.com",
-        "neighbourhood": "Cambie Broadway",
-        "name": "Sushi California",
-        "haveVisited": true,
-        "type": "Sushi"
-    }]
+    "foodLocations": [
+        {
+            "website": "www.tacomio.com",
+            "neighbourhood": "UBC",
+            "name": "Tacomio",
+            "haveVisited": false,
+            "type": "Mexican"
+        },
+        {
+            "website": "www.sushicali.com",
+            "neighbourhood": "Mt. Pleasant",
+            "name": "Sushi California",
+            "haveVisited": true,
+            "type": "Sushi"
+        },
+        {
+            "website": "www.babyloncafe.com",
+            "neighbourhood": "West End",
+            "name": "Babylon Cafe",
+            "haveVisited": false,
+            "type": "Mediterranean"
+        }
+    ]
 }

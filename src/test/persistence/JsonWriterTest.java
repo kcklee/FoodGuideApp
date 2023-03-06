@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class JsonWriterTest extends JsonTest {
 
     @Test
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public void testWriterInvalidFile() {
         try {
             FoodGuide fg = new FoodGuide("Kevin's Food Guide");
@@ -25,6 +26,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public void testWriterEmptyFoodGuide() {
         try {
             FoodGuide fg = new FoodGuide("Kevin's Food Guide");
@@ -43,6 +45,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public void testWriterGeneralFoodGuide() {
         try {
             FoodGuide fg = new FoodGuide("Kevin's Food Guide");

@@ -5,6 +5,7 @@ import persistence.Writable;
 
 // Represents a food location that has a name, neighbourhood, type, website
 // and indicates whether it has been visited or not
+// using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
 public class FoodLocation implements Writable {
 
     private String name;
@@ -24,9 +25,8 @@ public class FoodLocation implements Writable {
     }
 
     // TODO
-    // REQUIRES
-    // MODIFIES
-    // EFFECTS
+    // EFFECTS: constructs a JSON Object with the different details of each food location
+    //          and returns the JSON object
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     @Override
     public JSONObject toJson() {

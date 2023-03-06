@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class JsonReaderTest extends JsonTest {
 
     @Test
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
 
@@ -25,6 +26,7 @@ public class JsonReaderTest extends JsonTest {
     }
 
     @Test
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public void testReaderEmptyWorkRoom() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyFoodGuide.json");
 
@@ -38,6 +40,7 @@ public class JsonReaderTest extends JsonTest {
     }
 
     @Test
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public void testReaderGeneralFoodGuide() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralFoodGuide.json");
 
