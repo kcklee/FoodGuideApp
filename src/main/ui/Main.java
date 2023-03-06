@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 public class Main {
 
     // EFFECTS: runs a program that shows food locations that user wants to try with console-based user interaction
+    //          and data persistence
     public static void main(String[] args) {
         try {
             new FoodGuideApp();
