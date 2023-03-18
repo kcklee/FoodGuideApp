@@ -23,8 +23,7 @@ public class FoodLocation implements Writable {
         this.website = website;
         this.haveVisited = haveVisited;
     }
-
-    // TODO
+    
     // EFFECTS: constructs a JSON Object with the different details of each food location
     //          and returns the JSON object
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo

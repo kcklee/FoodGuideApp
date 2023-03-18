@@ -9,10 +9,11 @@ public class Main {
     // EFFECTS: runs a program that shows food locations that user wants to try with console-based user interaction
     //          and data persistence
     public static void main(String[] args) {
-        try {
-            new FoodGuideApp();
-        } catch (FileNotFoundException e) {
-            System.out.println("Unable to run application: file not found");
-        }
+//        try {
+        new FoodGuideGUI();
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Unable to run application: file not found");
+//        }
+//    }
     }
 }

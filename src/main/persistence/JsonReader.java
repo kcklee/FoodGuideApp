@@ -17,14 +17,12 @@ import java.util.stream.Stream;
 public class JsonReader {
     private String source;
 
-    // TODO
     // EFFECTS: constructs reader to read from source file
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public JsonReader(String source) {
         this.source = source;
     }
 
-    // TODO
     // EFFECTS: reads FoodGuide from file and returns it;
     // throws IOException if an error occurs reading data from file
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
@@ -34,7 +32,6 @@ public class JsonReader {
         return parseFoodGuide(jsonObject);
     }
 
-    // TODO
     // EFFECTS: reads source file as string and returns it
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private String readFile(String source) throws IOException {
@@ -47,7 +44,6 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // TODO
     // EFFECTS: parses FoodGuide from JSON object and returns it
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private FoodGuide parseFoodGuide(JSONObject jsonObject) {
@@ -58,7 +54,6 @@ public class JsonReader {
         return fg;
     }
 
-    // TODO
     // MODIFIES: fg
     // EFFECTS: parses foodLocations from JSON object and adds them to FoodGuide
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
@@ -70,7 +65,6 @@ public class JsonReader {
         }
     }
 
-    // TODO
     // MODIFIES: fg
     // EFFECTS: parses foodLocation from JSON object and adds it to FoodGuide
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
