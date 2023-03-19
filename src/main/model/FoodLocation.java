@@ -73,4 +73,13 @@ public class FoodLocation implements Writable {
     public boolean getHaveVisited() {
         return this.haveVisited;
     }
+
+    // TODO:
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
+    @Override
+    public String toString() {
+        return name;
+    }
 }

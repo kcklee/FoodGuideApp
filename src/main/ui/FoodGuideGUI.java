@@ -227,6 +227,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     // MODIFIES:
     // EFFECTS:
     private void viewFoodLocations() {
-        NewWindow foodLocations = new NewWindow();
+        FoodLocationsWindow foodLocations = new FoodLocationsWindow();
     }
 }
