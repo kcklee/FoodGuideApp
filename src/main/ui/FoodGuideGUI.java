@@ -1,6 +1,7 @@
 package ui;
 
 import model.FoodGuide;
+import model.FoodLocation;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -134,7 +135,7 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
         image = new ImageIcon("resources/foodtable.jpeg");
         welcomeMessage = new JLabel();
         welcomeMessage.setText(
-                "<html>Welcome to your Food Guide!<br><br>To begin, press any of the following buttons</html>");
+                "<html>Welcome to your Food Guide!<br><br>To begin, go the menu bar and select an option </html>");
         welcomeMessage.setIcon(image);
 
         panel3.add(welcomeMessage);
@@ -189,11 +190,11 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == addItem) {
-            addFoodLocation();
+            addFoodLocation(fg);
         }
 
         if (e.getSource() == viewItems) {
-            viewFoodLocations();
+            viewFoodLocations(fg);
         }
 
     }
@@ -218,15 +219,15 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     // REQUIRES:
     // MODIFIES:
     // EFFECTS:
-    private void addFoodLocation() {
-
+    private void addFoodLocation(FoodGuide fg) {
+        new AddWindow(fg);
     }
 
     // TODO
     // REQUIRES:
     // MODIFIES:
     // EFFECTS:
-    private void viewFoodLocations() {
-        FoodLocationsWindow foodLocations = new FoodLocationsWindow();
+    private void viewFoodLocations(FoodGuide fg) {
+        new ViewWindow(fg);
     }
 }
