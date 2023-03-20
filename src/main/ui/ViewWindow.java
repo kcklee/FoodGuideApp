@@ -4,7 +4,11 @@ import model.FoodGuide;
 import model.FoodLocation;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import static ui.FoodGuideGUI.SCREEN_HEIGHT;
 import static ui.FoodGuideGUI.SCREEN_WIDTH;
@@ -27,6 +31,9 @@ public class ViewWindow extends JFrame {
 
     private JPanel introPane;
     private JPanel buttonPane;
+
+    private JButton removeButton;
+    private JButton visitedButton;
 
     // TODO
     // REQUIRES:
@@ -68,6 +75,9 @@ public class ViewWindow extends JFrame {
 
         buttonPane = new JPanel();
         introPane = new JPanel();
+
+        removeButton = new JButton("Remove");
+        visitedButton = new JButton("Visited");
     }
 
     // TODO
@@ -80,9 +90,6 @@ public class ViewWindow extends JFrame {
         setUpSplitPane();
         setUpButtonPane();
 
-
-
-
     }
 
     // TODO
@@ -90,7 +97,7 @@ public class ViewWindow extends JFrame {
     // MODIFIES
     // EFFECTS
     private void setUpIntroPane() {
-        introPane.setPreferredSize(new Dimension(200, 30));
+        introPane.setPreferredSize(new Dimension(500, 30));
         introPane.setBackground(Color.white);
 
         introLabel.setText("Number of locations: " + fg.length());
@@ -122,6 +129,7 @@ public class ViewWindow extends JFrame {
 
         splitPane.setLeftComponent(new JScrollPane(list));
         panel.add(textArea);
+        panel.setBackground(Color.white);
         splitPane.setRightComponent(panel);
 
         splitPane.setDividerLocation(100);
@@ -129,21 +137,132 @@ public class ViewWindow extends JFrame {
 
     }
 
+//    @Override
+//    public void valueChanged(ListSelectionEvent e) {
+//        if (e.getValueIsAdjusting() == false) {
+//
+//            if (list.getSelectedIndex() == -1) {
+//                //No selection, disable fire button.
+//                removeButton.setEnabled(false);
+//
+//            } else {
+//                //Selection, enable the fire button.
+//                removeButton.setEnabled(true);
+//            }
+//        }
+//    }
+//
+//    // TODO
+//    // REQUIRES:
+//    // MODIFIES
+//    // EFFECTS
+//    // adapted from ListDemoProject
+//    public class RemoveListener implements ActionListener {
+//
+//        // TODO
+//        // REQUIRES:
+//        // MODIFIES
+//        // EFFECTS
+//        // adapted from ListDemoProject
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            int index = list.getSelectedIndex();
+//            removedFoodLocation = model.remove(index);
+//
+//
+//            fg.remove(removedFoodLocation);
+//
+//            int size = model.getSize();
+//
+//            if (size == 0) {
+//                removeButton.setEnabled(false);
+//
+//            } else {
+//                if (index == model.getSize()) {
+//                    index--;
+//                }
+//
+//                list.setSelectedIndex(index);
+//                list.ensureIndexIsVisible(index);
+//            }
+//
+//        }
+//    }
+
     // TODO
     // REQUIRES:
     // MODIFIES
     // EFFECTS
     private void setUpButtonPane() {
-        buttonPane.setPreferredSize(new Dimension(200, 30));
+        buttonPane.setPreferredSize(new Dimension(500, 30));
         buttonPane.setBackground(Color.white);
+
+        buttonPane.setLayout(new BoxLayout(buttonPane,
+                BoxLayout.LINE_AXIS));
+
+//        removeButton.addActionListener(this);
+        buttonPane.add(removeButton);
+        buttonPane.add(Box.createHorizontalStrut(5));
+        buttonPane.add(visitedButton);
+
     }
 
     // TODO
     // REQUIRES:
     // MODIFIES
     // EFFECTS
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        if (e.getSource() == removeButton) {
+//            removeFoodLocation();
+//        }
+//    }
+//
+//    private void removeFoodLocation() {
+//        int index = list.getSelectedIndex();
+//        model.removeElementAt(index);
+//
+//        FoodLocation selected = model.getElementAt(index);
+//        fg.remove(selected);
+//
+//        int size = model.getSize();
+//
+//        if (size == 0) {
+//            removeButton.setEnabled(false);
+//
+//        } else {
+//            if (index == model.getSize()) {
+//                index--;
+//            }
+//
+//            list.setSelectedIndex(index);
+//            list.ensureIndexIsVisible(index);
+//        }
+//    }
+
+//    @Override
+//    public void valueChanged(ListSelectionEvent e) {
+//        if (e.getValueIsAdjusting() == false) {
+//
+//            if (list.getSelectedIndex() == -1) {
+//                //No selection, disable fire button.
+//                removeButton.setEnabled(false);
+//
+//            } else {
+//                //Selection, enable the fire button.
+//                removeButton.setEnabled(true);
+//            }
+//        }
+//    }
+
+
+    // TODO
+    // REQUIRES:
+    // MODIFIES
+    // EFFECTS
     // add remove button
-    // add edit button
+    // add edit button for visited
     // add listlistener?
+
 
 }

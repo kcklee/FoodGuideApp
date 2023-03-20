@@ -10,17 +10,10 @@
         },
         {
             "website": "www.sushicali.com",
-            "neighbourhood": "Mt. Pleasant",
-            "name": "Sushi California",
-            "haveVisited": true,
-            "type": "Sushi"
-        },
-        {
-            "website": "www.babyloncafe.com",
-            "neighbourhood": "West End",
-            "name": "Babylon Cafe",
+            "neighbourhood": "Downtown",
+            "name": "Sushi Cali",
             "haveVisited": false,
-            "type": "Mediterranean"
+            "type": "Sushi"
         }
     ]
 }

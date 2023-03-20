@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // TODO
@@ -20,11 +22,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     private JPanel panel1;
     private JPanel panel2;
     private JPanel panel3;
-
-    private JButton loadButton;
-    private JButton saveButton;
-    private JButton viewButton;
-    private JButton addButton;
 
     private JMenuBar menuBar;
 
@@ -55,7 +52,7 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     // REQUIRES:
     // MODIFIES:
     // EFFECTS:
-    public FoodGuideGUI() {
+    public FoodGuideGUI() throws FileNotFoundException {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -98,34 +95,9 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
         add(panel2, BorderLayout.SOUTH);
         add(panel3, BorderLayout.CENTER);
 
-        setUpButtons();
         setUpMessage();
     }
 
-    // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
-    private void setUpButtons() {
-
-        loadButton = new JButton("Load");
-        loadButton.setFocusable(false);
-
-        saveButton = new JButton("Save");
-        saveButton.setFocusable(false);
-
-        viewButton = new JButton("View");
-        viewButton.setFocusable(false);
-
-        addButton = new JButton("Add");
-        addButton.setFocusable(false);
-
-        panel1.add(loadButton);
-        panel1.add(saveButton);
-
-        panel2.add(viewButton);
-        panel2.add(addButton);
-    }
 
     // TODO
     // REQUIRES:
@@ -204,7 +176,14 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     // MODIFIES:
     // EFFECTS:
     private void loadFoodGuide() {
-
+        try {
+            fg = jsonReader.read();
+            String confirmationMessage = "Loaded " + fg.getName() + " from " + JSON_STORE;
+            JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
+        } catch (IOException e) {
+            String errorMessage = "Unable to read from file: " + JSON_STORE;
+            JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.PLAIN_MESSAGE);
+        }
     }
 
     // TODO
@@ -212,7 +191,16 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     // MODIFIES:
     // EFFECTS:
     private void saveFoodGuide() {
-
+        try {
+            jsonWriter.open();
+            jsonWriter.write(fg);
+            jsonWriter.close();
+            String confirmationMessage = "Saved " + fg.getName() + " to " + JSON_STORE;
+            JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
+        } catch (FileNotFoundException e) {
+            String errorMessage = "Unable to write to file: " + JSON_STORE;
+            JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.PLAIN_MESSAGE);
+        }
     }
 
     // TODO
