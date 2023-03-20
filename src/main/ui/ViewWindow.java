@@ -17,7 +17,7 @@ import static ui.FoodGuideGUI.SCREEN_WIDTH;
 // REQUIRES:
 // MODIFIES:
 // EFFECTS:
-public class ViewWindow extends JFrame {
+public class ViewWindow extends JFrame implements ActionListener {
 
     private JLabel introLabel;
 
@@ -203,8 +203,24 @@ public class ViewWindow extends JFrame {
 //        removeButton.addActionListener(this);
         buttonPane.add(removeButton);
         buttonPane.add(Box.createHorizontalStrut(5));
-        buttonPane.add(visitedButton);
 
+        visitedButton.addActionListener(this);
+        buttonPane.add(visitedButton);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == visitedButton) {
+
+            int index = list.getSelectedIndex();
+
+            FoodLocation selected = model.getElementAt(index);
+
+            selected.setHaveVisited(true);
+
+            String confirmationMessage = selected.getName() + " has been updated!";
+            JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
+        }
     }
 
     // TODO
@@ -241,7 +257,7 @@ public class ViewWindow extends JFrame {
 //    }
 
 //    @Override
-//    public void valueChanged(ListSelectionEvent e) {
+//    public void valueChanged(ActionListener e) {
 //        if (e.getValueIsAdjusting() == false) {
 //
 //            if (list.getSelectedIndex() == -1) {

@@ -5,14 +5,14 @@
             "website": "www.tacomio.com",
             "neighbourhood": "UBC",
             "name": "Tacomio",
-            "haveVisited": false,
+            "haveVisited": true,
             "type": "Mexican"
         },
         {
             "website": "www.sushicali.com",
             "neighbourhood": "Downtown",
             "name": "Sushi Cali",
-            "haveVisited": false,
+            "haveVisited": true,
             "type": "Sushi"
         }
     ]
