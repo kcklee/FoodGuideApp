@@ -218,11 +218,9 @@ public class ViewWindow extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int index;
+        int index = list.getSelectedIndex();
 
-        if (list.getSelectedIndex() != -1) {
-
-            index = list.getSelectedIndex();
+        if (index != -1) {
             FoodLocation selected = model.getElementAt(index);
 
             if (e.getSource() == removeButton) {
@@ -239,9 +237,18 @@ public class ViewWindow extends JFrame implements ActionListener {
             }
         }
 
-        if (model.getSize() == 0) {
+        int modelSize = model.getSize();
+
+        if (modelSize == 0) {
             removeButton.setEnabled(false);
             visitedButton.setEnabled(false);
+        } else {
+            if (index == modelSize) {
+                index--;
+            }
+
+            list.setSelectedIndex(index);
+            list.ensureIndexIsVisible(index);
         }
     }
 
