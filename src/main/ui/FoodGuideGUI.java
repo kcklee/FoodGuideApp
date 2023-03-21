@@ -14,9 +14,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 // TODO
-// REQUIRES:
-// MODIFIES:
-// EFFECTS:
+// Represents a GUI version of a food guide application
+// using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
 public class FoodGuideGUI extends JFrame implements ActionListener {
 
     private JPanel panel1;
@@ -49,9 +48,9 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     private JsonReader jsonReader;
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: construct a FoodGuideGUI with a food guide and GUI components
+    //          if file can't be found, throws FileNotFoundException
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public FoodGuideGUI() throws FileNotFoundException {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,9 +72,8 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     }
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: set up panels with backgrounds, preferred sizes and layout and the welcome page
     private void setUpPanels() {
         panel1 = new JPanel();
         panel2 = new JPanel();
@@ -100,9 +98,8 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
 
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: set up the welcome page with an image and a welcome message
     private void setUpMessage() {
         image = new ImageIcon("resources/foodtable.jpeg");
         welcomeMessage = new JLabel();
@@ -117,9 +114,8 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     }
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: set up the menu bar with options to load, save, add and view
     private void setUpMenuBar() {
         menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -149,9 +145,8 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     }
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: processes user selection
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loadItem) {
@@ -172,49 +167,50 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     }
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: - loads FoodGuide from file
+    //          - displays confirmation pop-up message if successful, else displays error message
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void loadFoodGuide() {
         try {
             fg = jsonReader.read();
             String confirmationMessage = "Loaded " + fg.getName() + " from " + JSON_STORE;
-            JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, confirmationMessage,
+                    "Confirmation", JOptionPane.PLAIN_MESSAGE);
         } catch (IOException e) {
             String errorMessage = "Unable to read from file: " + JSON_STORE;
-            JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, errorMessage,
+                    "Error", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: - saves the FoodGuide to file
+    //          - displays confirmation pop-up message if successful, else displays error message
+    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void saveFoodGuide() {
         try {
             jsonWriter.open();
             jsonWriter.write(fg);
             jsonWriter.close();
             String confirmationMessage = "Saved " + fg.getName() + " to " + JSON_STORE;
-            JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, confirmationMessage,
+                    "Confirmation", JOptionPane.PLAIN_MESSAGE);
         } catch (FileNotFoundException e) {
             String errorMessage = "Unable to write to file: " + JSON_STORE;
-            JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, errorMessage,
+                    "Error", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: opens up a new AddWindow that lets the user add a new food location
     private void addFoodLocation(FoodGuide fg) {
         new AddWindow(fg);
     }
 
     // TODO
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: opens up a new ViewWindow that lets the user view already added food locations
     private void viewFoodLocations(FoodGuide fg) {
         new ViewWindow(fg);
     }

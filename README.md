@@ -38,9 +38,23 @@ would let me keep track of all these places as soon as I know about them.
 - As a user, I want to be able to select a food location in my food guide and rate whether I would go
 back or not
 
+## Instructions for Grader
+
+- You can generate the first required action related to adding Xs to a Y by selecting the menu item labelled "Add" 
+under "Edit"
+- You can generate the second required action related to adding Xs to a Y by selecting a food location and
+pressing the "Remove" button on the "View" window to remove it
+- You can locate my visual component by opening the application and seeing a picture on the window
+- You can save the state of my application by selecting the menu item labelled "Save" under "File"
+- You can reload the state of my application by selecting the menu item labelled "Load" under "File"
+
 ## Notes
 
-***My UI package was adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp and***
-***https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated***
+***My UI package was adapted from the following sources where indicated***
+- https://github.students.cs.ubc.ca/CPSC210/TellerApp
+- https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+- https://www.youtube.com/watch?v=iE8tZ0hn2Ws 
+- https://www.youtube.com/watch?v=KOI1WbkKUpQ 
+- https://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html (List Demo Project)
 
 ***My persistence package was adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo***

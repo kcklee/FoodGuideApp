@@ -41,25 +41,25 @@ public class FoodLocation implements Writable {
     // setters
 
     // TODO
-    // EFFECTS:
+    // EFFECTS: set name of the food location
     public void setName(String name) {
         this.name = name;
     }
 
     // TODO
-    // EFFECTS:
+    // EFFECTS: set neighbourhood of the food location
     public void setNeighbourhood(String neighbourhood) {
         this.neighbourhood = neighbourhood;
     }
 
     // TODO
-    // EFFECTS:
+    // EFFECTS: set type of the food location
     public void setType(String type) {
         this.type = type;
     }
 
     // TODO
-    // EFFECTS:
+    // EFFECTS: set website of the food location
     public void setWebsite(String website) {
         this.website = website;
     }
@@ -99,9 +99,7 @@ public class FoodLocation implements Writable {
     }
 
     // TODO:
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: return name of the food location
     @Override
     public String toString() {
         return name;
