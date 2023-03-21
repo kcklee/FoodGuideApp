@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import static ui.FoodGuideGUI.SCREEN_HEIGHT;
 import static ui.FoodGuideGUI.SCREEN_WIDTH;
 
+// TODO
+
 public class AddWindow extends JFrame implements ActionListener {
 
     private JPanel panel;
@@ -35,8 +37,19 @@ public class AddWindow extends JFrame implements ActionListener {
     // EFFECTS:
     public AddWindow(FoodGuide fg) {
         this.fg = fg;
+
+        instantiateFields();
+        setUpDisplay();
+        setUpFrame();
+
+    }
+
+    // TODO
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
+    private void instantiateFields() {
         panel = new JPanel();
-        panel.setLayout(null);
 
         introLabel =  new JLabel("Enter the details of the food location you want to add");
         nameLabel = new JLabel("Name");
@@ -50,18 +63,6 @@ public class AddWindow extends JFrame implements ActionListener {
         websiteText = new JTextField(20);
 
         addButton = new JButton("Add to Food Guide");
-
-
-        setUpDisplay();
-
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-        setLocationRelativeTo(null);
-
-        add(panel);
-
-        setTitle("Add a Food Location");
-        setVisible(true);
     }
 
     // TODO
@@ -69,6 +70,8 @@ public class AddWindow extends JFrame implements ActionListener {
     // MODIFIES:
     // EFFECTS:
     private void setUpDisplay() {
+        panel.setLayout(null);
+
         introLabel.setBounds(10, 20, 500, 25);
         panel.add(introLabel);
 
@@ -99,6 +102,21 @@ public class AddWindow extends JFrame implements ActionListener {
         addButton.setBounds(10, 180, 200, 25);
         addButton.addActionListener(this);
         panel.add(addButton);
+    }
+
+    // TODO
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
+    private void setUpFrame() {
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        setLocationRelativeTo(null);
+
+        add(panel);
+
+        setTitle("Add a Food Location");
+        setVisible(true);
     }
 
     // TODO

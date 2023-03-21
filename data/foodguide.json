@@ -10,10 +10,17 @@
         },
         {
             "website": "www.tacomio.com",
-            "neighbourhood": "UBC",
+            "neighbourhood": "Mt. Pleasant",
             "name": "Tacomio",
             "haveVisited": false,
             "type": "Mexican"
+        },
+        {
+            "website": "www.sushicali.com",
+            "neighbourhood": "Mt. Pleasant",
+            "name": "Sushi Cali",
+            "haveVisited": true,
+            "type": "Japanese"
         }
     ]
 }

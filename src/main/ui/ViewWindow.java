@@ -39,21 +39,10 @@ public class ViewWindow extends JFrame implements ActionListener {
     // MODIFIES:
     // EFFECTS:
     public ViewWindow(FoodGuide fg) {
-        initializeFields(fg);
+        this.fg = fg;
+        instantiateFields();
         setUpDisplay();
-
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-        setLayout(new BorderLayout());
-        setLocationRelativeTo(null);
-
-        add(introPane, BorderLayout.NORTH);
-        add(splitPane, BorderLayout.CENTER);
-        add(buttonPane, BorderLayout.SOUTH);
-        setTitle("List of Food Locations");
-        setVisible(true);
-
-        pack();
+        setUpFrame();
     }
 
 
@@ -61,9 +50,7 @@ public class ViewWindow extends JFrame implements ActionListener {
     // REQUIRES:
     // MODIFIES:
     // EFFECTS:
-    private void initializeFields(FoodGuide fg) {
-        this.fg = fg;
-
+    private void instantiateFields() {
         introLabel = new JLabel();
 
         list = new JList<>();
@@ -90,6 +77,25 @@ public class ViewWindow extends JFrame implements ActionListener {
         setUpSplitPane();
         setUpButtonPane();
 
+    }
+
+    // TODO
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
+    private void setUpFrame() {
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
+
+        add(introPane, BorderLayout.NORTH);
+        add(splitPane, BorderLayout.CENTER);
+        add(buttonPane, BorderLayout.SOUTH);
+        setTitle("List of Food Locations");
+        setVisible(true);
+
+        pack();
     }
 
     // TODO
@@ -139,58 +145,6 @@ public class ViewWindow extends JFrame implements ActionListener {
         splitPane.setPreferredSize(new Dimension(500, 440));
 
     }
-
-//    @Override
-//    public void valueChanged(ListSelectionEvent e) {
-//        if (e.getValueIsAdjusting() == false) {
-//
-//            if (list.getSelectedIndex() == -1) {
-//                //No selection, disable fire button.
-//                removeButton.setEnabled(false);
-//
-//            } else {
-//                //Selection, enable the fire button.
-//                removeButton.setEnabled(true);
-//            }
-//        }
-//    }
-//
-//    // TODO
-//    // REQUIRES:
-//    // MODIFIES
-//    // EFFECTS
-//    // adapted from ListDemoProject
-//    public class RemoveListener implements ActionListener {
-//
-//        // TODO
-//        // REQUIRES:
-//        // MODIFIES
-//        // EFFECTS
-//        // adapted from ListDemoProject
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            int index = list.getSelectedIndex();
-//            removedFoodLocation = model.remove(index);
-//
-//
-//            fg.remove(removedFoodLocation);
-//
-//            int size = model.getSize();
-//
-//            if (size == 0) {
-//                removeButton.setEnabled(false);
-//
-//            } else {
-//                if (index == model.getSize()) {
-//                    index--;
-//                }
-//
-//                list.setSelectedIndex(index);
-//                list.ensureIndexIsVisible(index);
-//            }
-//
-//        }
-//    }
 
     // TODO
     // REQUIRES:
@@ -286,63 +240,4 @@ public class ViewWindow extends JFrame implements ActionListener {
             list.ensureIndexIsVisible(index);
         }
     }
-
-    // TODO
-    // REQUIRES:
-    // MODIFIES
-    // EFFECTS
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
-//        if (e.getSource() == removeButton) {
-//            removeFoodLocation();
-//        }
-//    }
-//
-//    private void removeFoodLocation() {
-//        int index = list.getSelectedIndex();
-//        model.removeElementAt(index);
-//
-//        FoodLocation selected = model.getElementAt(index);
-//        fg.remove(selected);
-//
-//        int size = model.getSize();
-//
-//        if (size == 0) {
-//            removeButton.setEnabled(false);
-//
-//        } else {
-//            if (index == model.getSize()) {
-//                index--;
-//            }
-//
-//            list.setSelectedIndex(index);
-//            list.ensureIndexIsVisible(index);
-//        }
-//    }
-
-//    @Override
-//    public void valueChanged(ActionListener e) {
-//        if (e.getValueIsAdjusting() == false) {
-//
-//            if (list.getSelectedIndex() == -1) {
-//                //No selection, disable fire button.
-//                removeButton.setEnabled(false);
-//
-//            } else {
-//                //Selection, enable the fire button.
-//                removeButton.setEnabled(true);
-//            }
-//        }
-//    }
-
-
-    // TODO
-    // REQUIRES:
-    // MODIFIES
-    // EFFECTS
-    // add remove button
-    // add edit button for visited
-    // add listlistener?
-
-
 }

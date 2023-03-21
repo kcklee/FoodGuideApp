@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import static ui.FoodGuideGUI.SCREEN_HEIGHT;
 import static ui.FoodGuideGUI.SCREEN_WIDTH;
 
+// TODO
 public class UpdateWindow extends JFrame implements ActionListener {
     private JPanel panel;
 
@@ -34,27 +35,16 @@ public class UpdateWindow extends JFrame implements ActionListener {
     // MODIFIES:
     // EFFECTS:
     public UpdateWindow(FoodLocation selected)  {
-        panel = new JPanel();
-        panel.setLayout(null);
-
         this.selected = selected;
 
         initializeFields();
 
         getExistingText(selected);
 
-        updateButton = new JButton("Update Food Location");
-
         setUpDisplay();
 
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-        setLocationRelativeTo(null);
+        setUpFrame();
 
-        add(panel);
-
-        setTitle("Update a Food Location");
-        setVisible(true);
     }
 
     // TODO
@@ -62,6 +52,8 @@ public class UpdateWindow extends JFrame implements ActionListener {
     // MODIFIES:
     // EFFECTS:
     private void initializeFields() {
+        panel = new JPanel();
+
         introLabel =  new JLabel("Change details of the food location");
         nameLabel = new JLabel("Name");
         neighourhoodLabel = new JLabel("Neighbourhood");
@@ -74,6 +66,8 @@ public class UpdateWindow extends JFrame implements ActionListener {
         typeText = new JTextField(20);
         websiteText = new JTextField(20);
         haveVisitedText = new JTextField(20);
+
+        updateButton = new JButton("Update Food Location");
     }
 
     // TODO
@@ -101,7 +95,28 @@ public class UpdateWindow extends JFrame implements ActionListener {
         panel.add(updateButton);
     }
 
+    // TODO
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
+    private void setUpFrame() {
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        setLocationRelativeTo(null);
+
+        add(panel);
+
+        setTitle("Update a Food Location");
+        setVisible(true);
+    }
+
+    // TODO
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
     private void setUpUpdateArea() {
+        panel.setLayout(null);
+
         introLabel.setBounds(10, 20, 500, 25);
         panel.add(introLabel);
 
