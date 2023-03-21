@@ -2,25 +2,18 @@
     "name": "Kevin's Food Guide",
     "foodLocations": [
         {
+            "website": "www.pokeritto.com",
+            "neighbourhood": "Downtown",
+            "name": "Pokeritto",
+            "haveVisited": false,
+            "type": "Poke"
+        },
+        {
             "website": "www.tacomio.com",
             "neighbourhood": "UBC",
             "name": "Tacomio",
-            "haveVisited": true,
-            "type": "Mexican"
-        },
-        {
-            "website": "www.sushicali.com",
-            "neighbourhood": "Downtown",
-            "name": "Sushi Cali",
-            "haveVisited": true,
-            "type": "Sushi"
-        },
-        {
-            "website": "www.coco.com",
-            "neighbourhood": "Downtown",
-            "name": "Coco ",
             "haveVisited": false,
-            "type": "Bubble tea"
+            "type": "Mexican"
         }
     ]
 }

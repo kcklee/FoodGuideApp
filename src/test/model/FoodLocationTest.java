@@ -36,6 +36,30 @@ public class FoodLocationTest {
     }
 
     @Test
+    public void testSetName() {
+        fl1.setName("aroma eatery");
+        assertEquals("aroma eatery", fl1.getName());
+    }
+
+    @Test
+    public void testSetNeighbourhood() {
+        fl1.setNeighbourhood("Burnaby");
+        assertEquals("Burnaby", fl1.getNeighborhood());
+    }
+
+    @Test
+    public void testSetType() {
+        fl1.setType("Taiwanese Fried Chicken");
+        assertEquals("Taiwanese Fried Chicken", fl1.getType());
+    }
+
+    @Test
+    public void testSetWebsite() {
+        fl1.setWebsite("www.aromaeatery.com");
+        assertEquals("www.aromaeatery.com", fl1.getWebsite());
+    }
+
+    @Test
     public void testSetHaveVisitedOnce() {
         assertFalse(fl1.getHaveVisited());
         fl1.setHaveVisited(true);
@@ -51,5 +75,10 @@ public class FoodLocationTest {
 
         fl1.setHaveVisited(true);
         assertTrue(fl1.getHaveVisited());
+    }
+
+    @Test
+    public void testToString() {
+        assertEquals("Aroma Eatery", fl1.toString());
     }
 }

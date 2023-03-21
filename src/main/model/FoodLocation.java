@@ -40,6 +40,30 @@ public class FoodLocation implements Writable {
 
     // setters
 
+    // TODO
+    // EFFECTS:
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // TODO
+    // EFFECTS:
+    public void setNeighbourhood(String neighbourhood) {
+        this.neighbourhood = neighbourhood;
+    }
+
+    // TODO
+    // EFFECTS:
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    // TODO
+    // EFFECTS:
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
     // MODIFIES: this
     // EFFECTS: set whether the food location has been visited already
     public void setHaveVisited(boolean haveVisited) {

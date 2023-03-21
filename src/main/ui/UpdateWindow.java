@@ -1,20 +1,15 @@
 package ui;
 
-import exceptions.BackException;
-import exceptions.DuplicateNameException;
-import model.FoodGuide;
 import model.FoodLocation;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static ui.FoodGuideGUI.SCREEN_HEIGHT;
 import static ui.FoodGuideGUI.SCREEN_WIDTH;
 
-public class AddWindow extends JFrame implements ActionListener {
-
+public class UpdateWindow extends JFrame implements ActionListener {
     private JPanel panel;
 
     private JLabel introLabel;
@@ -22,38 +17,48 @@ public class AddWindow extends JFrame implements ActionListener {
     private JLabel neighourhoodLabel;
     private JLabel typeLabel;
     private JLabel websiteLabel;
+    private JLabel haveVisitedLabel;
 
     private JTextField nameText;
     private JTextField neighbourhoodText;
     private JTextField typeText;
     private JTextField websiteText;
+    private JTextField haveVisitedText;
 
-    private JButton addButton;
+    private JButton updateButton;
 
-    private FoodGuide fg;
+    private FoodLocation selected;
 
     // TODO
     // REQUIRES:
     // MODIFIES:
     // EFFECTS:
-    public AddWindow(FoodGuide fg) {
-        this.fg = fg;
+    public UpdateWindow(FoodLocation selected)  {
         panel = new JPanel();
         panel.setLayout(null);
 
-        introLabel =  new JLabel("Enter the details of the food location you want to add");
+        this.selected = selected;
+
+        introLabel =  new JLabel("Change details of the food location");
         nameLabel = new JLabel("Name");
         neighourhoodLabel = new JLabel("Neighbourhood");
         typeLabel = new JLabel("Type");
         websiteLabel = new JLabel("Website");
+        haveVisitedLabel = new JLabel("Already visited?");
 
         nameText = new JTextField(20);
         neighbourhoodText = new JTextField(20);
         typeText = new JTextField(20);
         websiteText = new JTextField(20);
+        haveVisitedText = new JTextField(20);
 
-        addButton = new JButton("Add to Food Guide");
+        nameText.setText(selected.getName());
+        neighbourhoodText.setText(selected.getNeighborhood());
+        typeText.setText(selected.getType());
+        websiteText.setText(selected.getWebsite());
+        haveVisitedText.setText(String.valueOf(selected.getHaveVisited()));
 
+        updateButton = new JButton("Update Food Location");
 
         setUpDisplay();
 
@@ -63,7 +68,7 @@ public class AddWindow extends JFrame implements ActionListener {
 
         add(panel);
 
-        setTitle("Add a Food Location");
+        setTitle("Update a Food Location");
         setVisible(true);
     }
 
@@ -99,9 +104,15 @@ public class AddWindow extends JFrame implements ActionListener {
         websiteText.setBounds(200, 140, 165, 25);
         panel.add(websiteText);
 
-        addButton.setBounds(10, 180, 200, 25);
-        addButton.addActionListener(this);
-        panel.add(addButton);
+        haveVisitedLabel.setBounds(10, 170, 100, 25);
+        panel.add(haveVisitedLabel);
+
+        haveVisitedText.setBounds(200, 170, 165, 25);
+        panel.add(haveVisitedText);
+
+        updateButton.setBounds(10, 210, 200, 25);
+        updateButton.addActionListener(this);
+        panel.add(updateButton);
     }
 
     // TODO
@@ -114,32 +125,15 @@ public class AddWindow extends JFrame implements ActionListener {
         String userNeighbourhoodInput = neighbourhoodText.getText();
         String userTypeInput = typeText.getText();
         String userWebsiteInput = websiteText.getText();
+        boolean userHaveVisitedInput = Boolean.parseBoolean(haveVisitedText.getText());
 
-        if (isDuplicateName(userNameInput)) {
-            String errorMessage = "Location already exists, try again";
-            JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.PLAIN_MESSAGE);
-        }
+        selected.setName(userNameInput);
+        selected.setNeighbourhood(userNeighbourhoodInput);
+        selected.setType(userTypeInput);
+        selected.setWebsite(userWebsiteInput);
+        selected.setHaveVisited(userHaveVisitedInput);
 
-        FoodLocation fl = new FoodLocation(userNameInput, userNeighbourhoodInput,
-                userTypeInput, userWebsiteInput, false);
-
-        if (fg.insert(fl)) {
-            String confirmationMessage = "Location added!";
-            JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
-        }
-    }
-
-    // EFFECTS: returns true if food location name already exists in food guide
-    //          else returns false
-    private boolean isDuplicateName(String name) {
-        name = name.toLowerCase();
-
-        for (FoodLocation fl : fg.getFoodLocations()) {
-            if (fl.getName().toLowerCase().equals(name)) {
-                return true;
-            }
-        }
-        return false;
+        String confirmationMessage = "Location updated!";
+        JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
     }
 }
-

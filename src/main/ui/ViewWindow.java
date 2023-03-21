@@ -4,8 +4,6 @@ import model.FoodGuide;
 import model.FoodLocation;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +32,7 @@ public class ViewWindow extends JFrame implements ActionListener {
 
     private JButton removeButton;
     private JButton visitedButton;
+    private JButton updateButton;
 
     // TODO
     // REQUIRES:
@@ -78,6 +77,7 @@ public class ViewWindow extends JFrame implements ActionListener {
 
         removeButton = new JButton("Remove");
         visitedButton = new JButton("Visited");
+        updateButton = new JButton("Update");
     }
 
     // TODO
@@ -205,14 +205,22 @@ public class ViewWindow extends JFrame implements ActionListener {
 
         removeButton.addActionListener(this);
         buttonPane.add(removeButton);
+
         buttonPane.add(Box.createHorizontalStrut(5));
 
         visitedButton.addActionListener(this);
         buttonPane.add(visitedButton);
 
+        buttonPane.add(Box.createHorizontalStrut(5));
+
+        updateButton.addActionListener(this);
+        buttonPane.add(updateButton);
+
+
         if (model.getSize() == 0) {
             removeButton.setEnabled(false);
             visitedButton.setEnabled(false);
+            updateButton.setEnabled(false);
         }
     }
 
@@ -235,6 +243,10 @@ public class ViewWindow extends JFrame implements ActionListener {
                 String confirmationMessage = selected.getName() + " has been updated!";
                 JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
             }
+
+            if (e.getSource() == updateButton) {
+                new UpdateWindow(selected);
+            }
         }
 
         int modelSize = model.getSize();
@@ -242,6 +254,7 @@ public class ViewWindow extends JFrame implements ActionListener {
         if (modelSize == 0) {
             removeButton.setEnabled(false);
             visitedButton.setEnabled(false);
+            updateButton.setEnabled(false);
         } else {
             if (index == modelSize) {
                 index--;
