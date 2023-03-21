@@ -1,12 +1,9 @@
 package ui;
 
-import exceptions.BackException;
-import exceptions.DuplicateNameException;
 import model.FoodGuide;
 import model.FoodLocation;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

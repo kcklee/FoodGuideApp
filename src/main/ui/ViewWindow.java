@@ -232,23 +232,45 @@ public class ViewWindow extends JFrame implements ActionListener {
             FoodLocation selected = model.getElementAt(index);
 
             if (e.getSource() == removeButton) {
-                model.remove(index);
-                fg.remove(selected);
-                textArea.setText(null);
+                removeFromList(index, selected);
             }
-
             if (e.getSource() == visitedButton) {
-                selected.setHaveVisited(true);
-
-                String confirmationMessage = selected.getName() + " has been updated!";
-                JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
+                makeVisited(selected);
             }
-
             if (e.getSource() == updateButton) {
                 new UpdateWindow(selected);
             }
         }
 
+        updateScreen(index);
+    }
+
+    // TODO
+    // REQUIRES:
+    // MODIFIES
+    // EFFECTS
+    private void removeFromList(int index, FoodLocation selected) {
+        model.remove(index);
+        fg.remove(selected);
+        textArea.setText(null);
+    }
+
+    // TODO
+    // REQUIRES:
+    // MODIFIES
+    // EFFECTS
+    private void makeVisited(FoodLocation selected) {
+        selected.setHaveVisited(true);
+
+        String confirmationMessage = selected.getName() + " has been updated!";
+        JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
+    }
+
+    // TODO
+    // REQUIRES:
+    // MODIFIES
+    // EFFECTS
+    private void updateScreen(int index) {
         int modelSize = model.getSize();
 
         if (modelSize == 0) {

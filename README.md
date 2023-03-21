@@ -27,7 +27,8 @@ would let me keep track of all these places as soon as I know about them.
 - As a user, I want to be able to select a food location in my food guide and view details about it
 - As a user, I want to be able to remove a food location from my food guide
 - As a user, I want to be able to mark a place as already tried
-- As a user, I want to be able to see the number of food locations in my food guide 
+- As a user, I want to be able to see the number of food locations in my food guide
+- As a user, I want to be able to edit the details of a food location in my food guide
 
 - As a user, I want to have the option to save the entire state of my food guide application to file
 - As a user, I want to have the option to reload from that state from file and resume exactly where I left off 

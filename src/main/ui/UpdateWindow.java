@@ -39,24 +39,9 @@ public class UpdateWindow extends JFrame implements ActionListener {
 
         this.selected = selected;
 
-        introLabel =  new JLabel("Change details of the food location");
-        nameLabel = new JLabel("Name");
-        neighourhoodLabel = new JLabel("Neighbourhood");
-        typeLabel = new JLabel("Type");
-        websiteLabel = new JLabel("Website");
-        haveVisitedLabel = new JLabel("Already visited?");
+        initializeFields();
 
-        nameText = new JTextField(20);
-        neighbourhoodText = new JTextField(20);
-        typeText = new JTextField(20);
-        websiteText = new JTextField(20);
-        haveVisitedText = new JTextField(20);
-
-        nameText.setText(selected.getName());
-        neighbourhoodText.setText(selected.getNeighborhood());
-        typeText.setText(selected.getType());
-        websiteText.setText(selected.getWebsite());
-        haveVisitedText.setText(String.valueOf(selected.getHaveVisited()));
+        getExistingText(selected);
 
         updateButton = new JButton("Update Food Location");
 
@@ -76,7 +61,47 @@ public class UpdateWindow extends JFrame implements ActionListener {
     // REQUIRES:
     // MODIFIES:
     // EFFECTS:
+    private void initializeFields() {
+        introLabel =  new JLabel("Change details of the food location");
+        nameLabel = new JLabel("Name");
+        neighourhoodLabel = new JLabel("Neighbourhood");
+        typeLabel = new JLabel("Type");
+        websiteLabel = new JLabel("Website");
+        haveVisitedLabel = new JLabel("Already visited?");
+
+        nameText = new JTextField(20);
+        neighbourhoodText = new JTextField(20);
+        typeText = new JTextField(20);
+        websiteText = new JTextField(20);
+        haveVisitedText = new JTextField(20);
+    }
+
+    // TODO
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
+    private void getExistingText(FoodLocation selected) {
+        nameText.setText(selected.getName());
+        neighbourhoodText.setText(selected.getNeighborhood());
+        typeText.setText(selected.getType());
+        websiteText.setText(selected.getWebsite());
+        haveVisitedText.setText(String.valueOf(selected.getHaveVisited()));
+    }
+
+
+    // TODO
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
     private void setUpDisplay() {
+        setUpUpdateArea();
+
+        updateButton.setBounds(10, 210, 200, 25);
+        updateButton.addActionListener(this);
+        panel.add(updateButton);
+    }
+
+    private void setUpUpdateArea() {
         introLabel.setBounds(10, 20, 500, 25);
         panel.add(introLabel);
 
@@ -109,10 +134,6 @@ public class UpdateWindow extends JFrame implements ActionListener {
 
         haveVisitedText.setBounds(200, 170, 165, 25);
         panel.add(haveVisitedText);
-
-        updateButton.setBounds(10, 210, 200, 25);
-        updateButton.addActionListener(this);
-        panel.add(updateButton);
     }
 
     // TODO
