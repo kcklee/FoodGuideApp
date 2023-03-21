@@ -118,13 +118,16 @@ public class ViewWindow extends JFrame implements ActionListener {
 
         list.getSelectionModel().addListSelectionListener(e -> {
             FoodLocation selected = list.getSelectedValue();
-            textArea.setTabSize(2);
-            textArea.setPreferredSize(new Dimension(350, 350));
-            textArea.setText("Here are the details of " + selected.getName()
-                    + "\n\t Neighbourhood: " + selected.getNeighborhood()
-                    + "\n\t Type: " + selected.getType()
-                    + "\n\t Website: " + selected.getWebsite()
-                    + "\n\t Already visited?: " + selected.getHaveVisited());
+            if (selected != null) {
+                textArea.setTabSize(2);
+                textArea.setPreferredSize(new Dimension(350, 350));
+                textArea.setText("Here are the details of " + selected.getName()
+                        + "\n\t Neighbourhood: " + selected.getNeighborhood()
+                        + "\n\t Type: " + selected.getType()
+                        + "\n\t Website: " + selected.getWebsite()
+                        + "\n\t Already visited?: " + selected.getHaveVisited());
+            }
+
         });
 
         splitPane.setLeftComponent(new JScrollPane(list));
@@ -200,26 +203,45 @@ public class ViewWindow extends JFrame implements ActionListener {
         buttonPane.setLayout(new BoxLayout(buttonPane,
                 BoxLayout.LINE_AXIS));
 
-//        removeButton.addActionListener(this);
+        removeButton.addActionListener(this);
         buttonPane.add(removeButton);
         buttonPane.add(Box.createHorizontalStrut(5));
 
         visitedButton.addActionListener(this);
         buttonPane.add(visitedButton);
+
+        if (model.getSize() == 0) {
+            removeButton.setEnabled(false);
+            visitedButton.setEnabled(false);
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == visitedButton) {
+        int index;
 
-            int index = list.getSelectedIndex();
+        if (list.getSelectedIndex() != -1) {
 
+            index = list.getSelectedIndex();
             FoodLocation selected = model.getElementAt(index);
 
-            selected.setHaveVisited(true);
+            if (e.getSource() == removeButton) {
+                model.remove(index);
+                fg.remove(selected);
+                textArea.setText(null);
+            }
 
-            String confirmationMessage = selected.getName() + " has been updated!";
-            JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
+            if (e.getSource() == visitedButton) {
+                selected.setHaveVisited(true);
+
+                String confirmationMessage = selected.getName() + " has been updated!";
+                JOptionPane.showMessageDialog(null, confirmationMessage, "Confirmation", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
+
+        if (model.getSize() == 0) {
+            removeButton.setEnabled(false);
+            visitedButton.setEnabled(false);
         }
     }
 
