@@ -32,6 +32,8 @@ public class UpdateWindow extends JFrame implements ActionListener {
 
     private FoodLocation selected;
 
+    private MessagePrinter mp;
+
     // TODO
     // EFFECTS: constructs an update window with a given food location and GUI components
     public UpdateWindow(FoodLocation selected)  {
@@ -63,6 +65,8 @@ public class UpdateWindow extends JFrame implements ActionListener {
         haveVisitedText = new JTextField(20);
 
         updateButton = new JButton("Update Food Location");
+
+        mp = new MessagePrinter();
     }
 
     // TODO
@@ -162,8 +166,6 @@ public class UpdateWindow extends JFrame implements ActionListener {
         selected.setWebsite(userWebsiteInput);
         selected.setHaveVisited(userHaveVisitedInput);
 
-        String confirmationMessage = "Location updated!";
-        JOptionPane.showMessageDialog(null, confirmationMessage,
-                "Confirmation", JOptionPane.PLAIN_MESSAGE);
+        mp.printConfirmationMessage("Location updated!");
     }
 }

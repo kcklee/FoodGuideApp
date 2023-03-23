@@ -32,6 +32,8 @@ public class AddWindow extends JFrame implements ActionListener {
 
     private FoodGuide fg;
 
+    private MessagePrinter mp;
+
     // TODO
     // EFFECTS: constructs an add window with a food guide and GUI components
     public AddWindow(FoodGuide fg) {
@@ -61,6 +63,8 @@ public class AddWindow extends JFrame implements ActionListener {
         websiteText = new JTextField(20);
 
         addButton = new JButton("Add to Food Guide");
+
+        mp = new MessagePrinter();
     }
 
     // TODO
@@ -132,17 +136,14 @@ public class AddWindow extends JFrame implements ActionListener {
         String userWebsiteInput = websiteText.getText();
 
         if (isDuplicateName(userNameInput)) {
-            String errorMessage = "Location already exists, try again";
-            JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.PLAIN_MESSAGE);
+            mp.printErrorMessage("Location already exists, try again");
         }
 
         FoodLocation fl = new FoodLocation(userNameInput, userNeighbourhoodInput,
                 userTypeInput, userWebsiteInput, false);
 
         if (fg.insert(fl)) {
-            String confirmationMessage = "Location added!";
-            JOptionPane.showMessageDialog(null, confirmationMessage,
-                    "Confirmation", JOptionPane.PLAIN_MESSAGE);
+            mp.printConfirmationMessage("Location added!");
         }
     }
 

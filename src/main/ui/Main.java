@@ -11,6 +11,7 @@ public class Main {
     // EFFECTS: runs a GUI program that shows food locations that user wants to try with data persistence
     public static void main(String[] args) {
         try {
+//            new FoodGuideApp();
             new FoodGuideGUI();
         } catch (FileNotFoundException e) {
             String errorMessage = "Unable to run application: file not found";

@@ -17,10 +17,10 @@
         },
         {
             "website": "www.sushicali.com",
-            "neighbourhood": "Mt. Pleasant",
+            "neighbourhood": "Downtown",
             "name": "Sushi Cali",
-            "haveVisited": true,
-            "type": "Japanese"
+            "haveVisited": false,
+            "type": "Sushi"
         }
     ]
 }

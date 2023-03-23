@@ -47,6 +47,8 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
+    private MessagePrinter mp;
+
     // TODO
     // EFFECTS: construct a FoodGuideGUI with a food guide and GUI components
     //          if file can't be found, throws FileNotFoundException
@@ -66,6 +68,8 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
         fg = new FoodGuide("Kevin's Food Guide");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+
+        mp = new MessagePrinter();
 
         pack();
 
@@ -100,11 +104,12 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     // TODO
     // MODIFIES: this
     // EFFECTS: set up the welcome page with an image and a welcome message
+    // Photo from https://unsplash.com/photos/hrlvr2ZlUNk
     private void setUpMessage() {
         image = new ImageIcon("resources/foodtable.jpeg");
         welcomeMessage = new JLabel();
         welcomeMessage.setText(
-                "<html>Welcome to your Food Guide!<br><br>To begin, go the menu bar and select an option </html>");
+                "<html>Welcome to your Food Guide!<br><br>To begin, go the menu bar and select an option</html>");
         welcomeMessage.setIcon(image);
 
         panel3.add(welcomeMessage);
@@ -174,13 +179,10 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     private void loadFoodGuide() {
         try {
             fg = jsonReader.read();
-            String confirmationMessage = "Loaded " + fg.getName() + " from " + JSON_STORE;
-            JOptionPane.showMessageDialog(null, confirmationMessage,
-                    "Confirmation", JOptionPane.PLAIN_MESSAGE);
+            mp.printConfirmationMessage("Loaded " + fg.getName() + " from " + JSON_STORE);
+
         } catch (IOException e) {
-            String errorMessage = "Unable to read from file: " + JSON_STORE;
-            JOptionPane.showMessageDialog(null, errorMessage,
-                    "Error", JOptionPane.PLAIN_MESSAGE);
+            mp.printErrorMessage("Unable to read from file: " + JSON_STORE);
         }
     }
 
@@ -193,13 +195,10 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
             jsonWriter.open();
             jsonWriter.write(fg);
             jsonWriter.close();
-            String confirmationMessage = "Saved " + fg.getName() + " to " + JSON_STORE;
-            JOptionPane.showMessageDialog(null, confirmationMessage,
-                    "Confirmation", JOptionPane.PLAIN_MESSAGE);
+            mp.printConfirmationMessage("Saved " + fg.getName() + " to " + JSON_STORE);
+
         } catch (FileNotFoundException e) {
-            String errorMessage = "Unable to write to file: " + JSON_STORE;
-            JOptionPane.showMessageDialog(null, errorMessage,
-                    "Error", JOptionPane.PLAIN_MESSAGE);
+            mp.printErrorMessage("Unable to write to file: " + JSON_STORE);
         }
     }
 

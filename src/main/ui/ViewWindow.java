@@ -35,6 +35,8 @@ public class ViewWindow extends JFrame implements ActionListener {
     private JButton visitedButton;
     private JButton updateButton;
 
+    private MessagePrinter mp;
+
     // TODO
     // EFFECTS: constructs an view window with a given food guide and GUI components
     public ViewWindow(FoodGuide fg) {
@@ -63,6 +65,8 @@ public class ViewWindow extends JFrame implements ActionListener {
         removeButton = new JButton("Remove");
         visitedButton = new JButton("Visited");
         updateButton = new JButton("Update");
+
+        mp = new MessagePrinter();
     }
 
     // TODO
@@ -166,7 +170,6 @@ public class ViewWindow extends JFrame implements ActionListener {
         updateButton.addActionListener(this);
         buttonPane.add(updateButton);
 
-
         if (model.getSize() == 0) {
             removeButton.setEnabled(false);
             visitedButton.setEnabled(false);
@@ -207,9 +210,7 @@ public class ViewWindow extends JFrame implements ActionListener {
         fg.remove(selected);
         textArea.setText(null);
 
-        String confirmationMessage = selected.getName() + " has been removed!";
-        JOptionPane.showMessageDialog(null, confirmationMessage,
-                "Confirmation", JOptionPane.PLAIN_MESSAGE);
+        mp.printConfirmationMessage(selected.getName() + " has been removed!");
     }
 
     // TODO
@@ -219,9 +220,7 @@ public class ViewWindow extends JFrame implements ActionListener {
     private void makeVisited(FoodLocation selected) {
         selected.setHaveVisited(true);
 
-        String confirmationMessage = selected.getName() + " has been updated!";
-        JOptionPane.showMessageDialog(null, confirmationMessage,
-                "Confirmation", JOptionPane.PLAIN_MESSAGE);
+        mp.printConfirmationMessage(selected.getName() + " has been updated!");
     }
 
     // TODO
