@@ -41,7 +41,7 @@ back or not
 ## Instructions for Grader
 
 - You can generate the first required action related to adding Xs to a Y by selecting the menu item labelled "Add" 
-under "Edit"
+under "Edit" to add a food location
 - You can generate the second required action related to adding Xs to a Y by selecting a food location and
 pressing the "Remove" button on the "View" window to remove it
 - You can locate my visual component by opening the application and seeing a picture on the window

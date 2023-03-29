@@ -36,7 +36,7 @@ public class ViewWindow extends JFrame implements ActionListener {
 
     private MessagePrinter mp;
 
-    // EFFECTS: constructs an view window with a given food guide and GUI components
+    // EFFECTS: constructs a view window with a given food guide and GUI components
     public ViewWindow(FoodGuide fg) {
         this.fg = fg;
         instantiateFields();
