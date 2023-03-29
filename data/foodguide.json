@@ -5,22 +5,15 @@
             "website": "www.pokeritto.com",
             "neighbourhood": "Downtown",
             "name": "Pokeritto",
-            "haveVisited": false,
-            "type": "Poke"
+            "haveVisited": true,
+            "type": "Poke Bowls"
         },
         {
-            "website": "www.tacomio.com",
+            "website": "www.sharetea.com",
             "neighbourhood": "Mt. Pleasant",
-            "name": "Tacomio",
+            "name": "Sharetea",
             "haveVisited": false,
-            "type": "Mexican"
-        },
-        {
-            "website": "www.sushicali.com",
-            "neighbourhood": "Downtown",
-            "name": "Sushi Cali",
-            "haveVisited": false,
-            "type": "Sushi"
+            "type": "Bubble Tea"
         }
     ]
 }

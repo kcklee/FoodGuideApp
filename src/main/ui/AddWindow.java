@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import static ui.FoodGuideGUI.SCREEN_HEIGHT;
 import static ui.FoodGuideGUI.SCREEN_WIDTH;
 
-// TODO
 // Represents a GUI window that allows the user to add a food location
 // using code adapted from https://www.youtube.com/watch?v=iE8tZ0hn2Ws where indicated
 public class AddWindow extends JFrame implements ActionListener {
@@ -34,7 +33,6 @@ public class AddWindow extends JFrame implements ActionListener {
 
     private MessagePrinter mp;
 
-    // TODO
     // EFFECTS: constructs an add window with a food guide and GUI components
     public AddWindow(FoodGuide fg) {
         this.fg = fg;
@@ -45,7 +43,6 @@ public class AddWindow extends JFrame implements ActionListener {
 
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: instantiate the fields of AddWindow
     private void instantiateFields() {
@@ -67,11 +64,10 @@ public class AddWindow extends JFrame implements ActionListener {
         mp = new MessagePrinter();
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: sets up the display of the AddWindow by setting its layout and
     //          adding labels, text fields and a button to a panel
-    // using code adapted from https://www.youtube.com/watch?v=iE8tZ0hn2Ws where indicated
+    // using code adapted from https://www.youtube.com/watch?v=iE8tZ0hn2Ws
     private void setUpDisplay() {
         panel.setLayout(null);
 
@@ -107,7 +103,6 @@ public class AddWindow extends JFrame implements ActionListener {
         panel.add(addButton);
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: sets up the frame of the AddWindow by customizing it and adding a panel to the frame
     private void setUpFrame() {
@@ -121,7 +116,6 @@ public class AddWindow extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: - when the add button is pressed,
     //            adds a food location and its details (provided by user) to the food guide if the given food location

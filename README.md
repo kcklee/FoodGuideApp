@@ -5,7 +5,7 @@
 ***What will the application do?***
 
 My food guide application will keep track of food locations that a user wants to try out. It lets a user enter food
-locations, view information about them, and rate them. Possible features include listing all places that 
+locations, view information about them, and add/edit their details. Possible features include listing all places that 
 they want to try; showing food locations and their details; marking the food locations they've tried.
 
 ***Who will use it?***

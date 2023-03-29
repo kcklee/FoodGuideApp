@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import static ui.FoodGuideGUI.SCREEN_HEIGHT;
 import static ui.FoodGuideGUI.SCREEN_WIDTH;
 
-// TODO
 // Represents a GUI window that allows the user to update a food location
 // using code adapted from https://www.youtube.com/watch?v=iE8tZ0hn2Ws where indicated
 public class UpdateWindow extends JFrame implements ActionListener {
@@ -34,7 +33,6 @@ public class UpdateWindow extends JFrame implements ActionListener {
 
     private MessagePrinter mp;
 
-    // TODO
     // EFFECTS: constructs an update window with a given food location and GUI components
     public UpdateWindow(FoodLocation selected)  {
         this.selected = selected;
@@ -45,7 +43,6 @@ public class UpdateWindow extends JFrame implements ActionListener {
         setUpFrame();
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: instantiate the fields of UpdateWindow
     private void instantiateFields() {
@@ -69,7 +66,6 @@ public class UpdateWindow extends JFrame implements ActionListener {
         mp = new MessagePrinter();
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: sets the text of the text fields with the existing details of the given food location
     private void getExistingText(FoodLocation selected) {
@@ -81,7 +77,6 @@ public class UpdateWindow extends JFrame implements ActionListener {
     }
 
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: sets up the display of the UpdateWindow by adding labels, text fields and a button to a panel
     private void setUpDisplay() {
@@ -92,7 +87,6 @@ public class UpdateWindow extends JFrame implements ActionListener {
         panel.add(updateButton);
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: sets up the frame of the AddWindow by customizing it and adding a panel to the frame
     private void setUpFrame() {
@@ -106,7 +100,6 @@ public class UpdateWindow extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: set up the panel by setting the layout of the panel and adding labels and text fields
     // using code adapted from https://www.youtube.com/watch?v=iE8tZ0hn2Ws
@@ -147,7 +140,6 @@ public class UpdateWindow extends JFrame implements ActionListener {
         panel.add(haveVisitedText);
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: - when the update button is pressed,
     //            updates the food location with the new details (provided by user)

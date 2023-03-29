@@ -1,7 +1,6 @@
 package ui;
 
 import model.FoodGuide;
-import model.FoodLocation;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -13,7 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-// TODO
 // Represents a GUI version of a food guide application
 // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
 public class FoodGuideGUI extends JFrame implements ActionListener {
@@ -49,7 +47,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
 
     private MessagePrinter mp;
 
-    // TODO
     // EFFECTS: construct a FoodGuideGUI with a food guide and GUI components
     //          if file can't be found, throws FileNotFoundException
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
@@ -75,7 +72,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
 
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: set up panels with backgrounds, preferred sizes and layout and the welcome page
     private void setUpPanels() {
@@ -100,8 +96,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
         setUpMessage();
     }
 
-
-    // TODO
     // MODIFIES: this
     // EFFECTS: set up the welcome page with an image and a welcome message
     // Photo from https://unsplash.com/photos/hrlvr2ZlUNk
@@ -118,7 +112,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
         welcomeMessage.setHorizontalAlignment(JLabel.CENTER);
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: set up the menu bar with options to load, save, add and view
     private void setUpMenuBar() {
@@ -149,7 +142,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
         viewItems.addActionListener(this);
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: processes user selection
     @Override
@@ -171,7 +163,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
 
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: - loads FoodGuide from file
     //          - displays confirmation pop-up message if successful, else displays error message
@@ -186,7 +177,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
         }
     }
 
-    // TODO
     // EFFECTS: - saves the FoodGuide to file
     //          - displays confirmation pop-up message if successful, else displays error message
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
@@ -202,13 +192,11 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
         }
     }
 
-    // TODO
     // EFFECTS: opens up a new AddWindow that lets the user add a new food location
     private void addFoodLocation(FoodGuide fg) {
         new AddWindow(fg);
     }
 
-    // TODO
     // EFFECTS: opens up a new ViewWindow that lets the user view already added food locations
     private void viewFoodLocations(FoodGuide fg) {
         new ViewWindow(fg);

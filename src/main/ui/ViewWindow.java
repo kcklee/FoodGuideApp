@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import static ui.FoodGuideGUI.SCREEN_HEIGHT;
 import static ui.FoodGuideGUI.SCREEN_WIDTH;
 
-// TODO
 // Represents a GUI window that allows the user to view already added food locations
 // using code adapted from https://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html
 //       (List Demo Project)
@@ -37,7 +36,6 @@ public class ViewWindow extends JFrame implements ActionListener {
 
     private MessagePrinter mp;
 
-    // TODO
     // EFFECTS: constructs an view window with a given food guide and GUI components
     public ViewWindow(FoodGuide fg) {
         this.fg = fg;
@@ -46,8 +44,6 @@ public class ViewWindow extends JFrame implements ActionListener {
         setUpFrame();
     }
 
-
-    // TODO
     // MODIFIES: this
     // EFFECTS: instantiate the fields of ViewWindow
     private void instantiateFields() {
@@ -69,7 +65,6 @@ public class ViewWindow extends JFrame implements ActionListener {
         mp = new MessagePrinter();
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: sets up the display of the ViewWindow by customizing the different panels in the frame
     private void setUpDisplay() {
@@ -80,7 +75,6 @@ public class ViewWindow extends JFrame implements ActionListener {
 
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: sets up the frame of the AddWindow by customizing it and adding panels to the frame
     private void setUpFrame() {
@@ -98,7 +92,6 @@ public class ViewWindow extends JFrame implements ActionListener {
         pack();
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: set up the top panel by setting its preferred size, background colour, text and adding a label
     private void setUpIntroPane() {
@@ -110,7 +103,6 @@ public class ViewWindow extends JFrame implements ActionListener {
         introPane.add(introLabel);
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: set up the split pane so that it displays all food locations already in the food guide on the left
     //          of the split pane and all of the corresponding details of a selected food location on the right side
@@ -146,7 +138,6 @@ public class ViewWindow extends JFrame implements ActionListener {
 
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: - set up the bottom panel by customizing it and adding the remove, visited and update buttons
     //          - make buttons disabled when there are no food locations in the window
@@ -177,7 +168,6 @@ public class ViewWindow extends JFrame implements ActionListener {
         }
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: process user command and updates screen accordingly
     @Override
@@ -201,9 +191,8 @@ public class ViewWindow extends JFrame implements ActionListener {
         updateScreen(index);
     }
 
-    // TODO
     // MODIFIES: this
-    // EFFECTS: - remove selected food location and its details from the window and and from the food guide
+    // EFFECTS: - remove selected food location and its details from the window and from the food guide
     //          - displays confirmation pop-up message if successful
     private void removeFromList(int index, FoodLocation selected) {
         model.remove(index);
@@ -213,7 +202,6 @@ public class ViewWindow extends JFrame implements ActionListener {
         mp.printConfirmationMessage(selected.getName() + " has been removed!");
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: - mark selected food location as visited in the food guide
     //          - displays confirmation pop-up message if successful
@@ -223,7 +211,6 @@ public class ViewWindow extends JFrame implements ActionListener {
         mp.printConfirmationMessage(selected.getName() + " has been updated!");
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: - update split pane so the next default selected food location is the one at the bottom
     //          - make buttons disabled if there are no more food locations in the window
