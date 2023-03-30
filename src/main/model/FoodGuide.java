@@ -21,6 +21,7 @@ public class FoodGuide implements Writable {
         foodLocations = new ArrayList<>();
     }
 
+    // TODO
     // MODIFIES: this
     // EFFECTS: - adds given food location into food locations list, if a food location with a matching name
     //          isn't already in food locations list
@@ -32,9 +33,11 @@ public class FoodGuide implements Writable {
             }
         }
         foodLocations.add(foodLocation);
+        EventLog.getInstance().logEvent(new Event(foodLocation.getName() + " added to Food Guide"));
         return true;
     }
 
+    // TODO
     // MODIFIES: this
     // EFFECTS: - removes the given food location from food locations list
     //          - return true if successful removal, else return false
@@ -42,6 +45,7 @@ public class FoodGuide implements Writable {
         for (FoodLocation fl : foodLocations) {
             if (fl.equals(foodLocation)) {
                 foodLocations.remove(fl);
+                EventLog.getInstance().logEvent(new Event(fl.getName() + " removed from Food Guide"));
                 return true;
             }
         }

@@ -48,6 +48,21 @@ pressing the "Remove" button on the "View" window to remove it
 - You can save the state of my application by selecting the menu item labelled "Save" under "File"
 - You can reload the state of my application by selecting the menu item labelled "Load" under "File"
 
+## Phase 4: Task 2
+***Sample of Events:***
+
+Thu Mar 30 09:28:45 PDT 2023
+Sushi California added to Food Guide
+
+Thu Mar 30 09:28:59 PDT 2023
+Tacomio added to Food Guide
+
+Thu Mar 30 09:29:06 PDT 2023
+Sushi California removed from Food Guide
+
+
+Process finished with exit code 0
+
 ## Notes
 
 ***My UI package was adapted from the following sources where indicated***

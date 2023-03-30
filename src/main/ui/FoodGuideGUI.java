@@ -1,20 +1,21 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.FoodGuide;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
 // Represents a GUI version of a food guide application
 // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
-public class FoodGuideGUI extends JFrame implements ActionListener {
+public class FoodGuideGUI extends JFrame implements ActionListener, WindowListener {
 
     private JPanel panel1;
     private JPanel panel2;
@@ -52,8 +53,8 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public FoodGuideGUI() throws FileNotFoundException {
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         setLayout(new BorderLayout());
         setTitle("Food Guide Application");
         setVisible(true);
@@ -69,6 +70,8 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
         mp = new MessagePrinter();
 
         pack();
+
+        addWindowListener(this);
 
     }
 
@@ -200,5 +203,50 @@ public class FoodGuideGUI extends JFrame implements ActionListener {
     // EFFECTS: opens up a new ViewWindow that lets the user view already added food locations
     private void viewFoodLocations(FoodGuide fg) {
         new ViewWindow(fg);
+    }
+
+    // TODO
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    // TODO
+    @Override
+    public void windowClosing(WindowEvent e) {
+        dispose();
+    }
+
+    // TODO
+    @Override
+    public void windowClosed(WindowEvent e) {
+        EventLog events = EventLog.getInstance();
+        for (Event el : events) {
+            System.out.println(el.toString() + "\n");
+        }
+    }
+
+    // TODO
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    // TODO
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    // TODO
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    // TODO
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
     }
 }
