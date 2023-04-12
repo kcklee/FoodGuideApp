@@ -63,6 +63,14 @@ Sushi California removed from Food Guide
 
 Process finished with exit code 0
 
+## Phase 4: Task 3
+
+If I had more to work on my project, one refactoring I would do would be to create an abstract class (ie EntryWindow) that AddWindow and UpdateWindow would extend (instead of extending JFrame and implementing ActionListener). This abstract class would then extend JFrame and implement ActionListener. This is because these two windows are almost identical aesthetically. UpdateWindow just has one additional area in the window that lets the user change the status of whether the food location has been visited or not. It also has a different button. But, they share a lot of similar fields and methods. So, having an abstract class that contains the repetitive code of the two windows would allow me to have a single point of control, to reduce semantic coupling and to reduce repetitive code.
+
+I would also create an interface called Window that the concrete class ViewWindow and the abstract class EntryWindow (from above) would implement. This would be an interface that would declare the 3 methods that are shared by the 3 concrete windows (AddWindow, UpdateWindow, ViewWindow): instantiateFields(), setUpDisplay() and setUpFrame(). This would be useful for future proofing my project in case I would want to do something to all windows or to loop through all the windows for some reason (ie add them all to a list to iterate through them).
+
+In my FoodGuideGUI constructor, I would also set up 2 more helper methods to group together the lines of code that are related to the same effect to improve readability. So I would group lines 55-59 to extract a helper method called setUpFrame and group lines 65-69 to extract another helper method called instantiateFields.
+
 ## Notes
 
 ***My UI package was adapted from the following sources where indicated***

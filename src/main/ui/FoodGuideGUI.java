@@ -11,7 +11,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 
 // Represents a GUI version of a food guide application
 // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
@@ -35,13 +34,13 @@ public class FoodGuideGUI extends JFrame implements ActionListener, WindowListen
     private JLabel welcomeMessage;
 
     private ImageIcon image;
+
     public static final int SCREEN_WIDTH = 500;
     public static final int SCREEN_HEIGHT = SCREEN_WIDTH;
 
     private static final String JSON_STORE = "./data/foodguide.json";
 
     private FoodGuide fg;
-    private Scanner input;
 
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -205,19 +204,19 @@ public class FoodGuideGUI extends JFrame implements ActionListener, WindowListen
         new ViewWindow(fg);
     }
 
-    // TODO
+    // NOTE: method inherited from WindowListener interface but not needed/used so no specification added
     @Override
     public void windowOpened(WindowEvent e) {
 
     }
 
-    // TODO
+    // NOTE: method inherited from WindowListener interface but not needed/used so no specification added
     @Override
     public void windowClosing(WindowEvent e) {
         dispose();
     }
 
-    // TODO
+    // EFFECTS: print out all events in the event log when window is closed
     @Override
     public void windowClosed(WindowEvent e) {
         EventLog events = EventLog.getInstance();
@@ -226,25 +225,25 @@ public class FoodGuideGUI extends JFrame implements ActionListener, WindowListen
         }
     }
 
-    // TODO
+    // NOTE: method inherited from WindowListener interface but not needed/used so no specification added
     @Override
     public void windowIconified(WindowEvent e) {
 
     }
 
-    // TODO
+    // NOTE: method inherited from WindowListener interface but not needed/used so no specification added
     @Override
     public void windowDeiconified(WindowEvent e) {
 
     }
 
-    // TODO
+    // NOTE: method inherited from WindowListener interface but not needed/used so no specification added
     @Override
     public void windowActivated(WindowEvent e) {
 
     }
 
-    // TODO
+    // NOTE: method inherited from WindowListener interface but not needed/used so no specification added
     @Override
     public void windowDeactivated(WindowEvent e) {
 

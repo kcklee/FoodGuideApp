@@ -21,11 +21,11 @@ public class FoodGuide implements Writable {
         foodLocations = new ArrayList<>();
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: - adds given food location into food locations list, if a food location with a matching name
     //          isn't already in food locations list
     //          - return true if successful insertion, else return false
+    //          - add this insertion event into the event log
     public boolean insert(FoodLocation foodLocation) {
         for (FoodLocation fl : foodLocations) {
             if (fl.getName().equals(foodLocation.getName())) {
@@ -37,10 +37,10 @@ public class FoodGuide implements Writable {
         return true;
     }
 
-    // TODO
     // MODIFIES: this
     // EFFECTS: - removes the given food location from food locations list
     //          - return true if successful removal, else return false
+    //          - add this removal event into the event log
     public boolean remove(FoodLocation foodLocation) {
         for (FoodLocation fl : foodLocations) {
             if (fl.equals(foodLocation)) {
