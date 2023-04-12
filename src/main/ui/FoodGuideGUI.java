@@ -210,7 +210,7 @@ public class FoodGuideGUI extends JFrame implements ActionListener, WindowListen
 
     }
 
-    // NOTE: method inherited from WindowListener interface but not needed/used so no specification added
+    // EFFECTS: close window
     @Override
     public void windowClosing(WindowEvent e) {
         dispose();
