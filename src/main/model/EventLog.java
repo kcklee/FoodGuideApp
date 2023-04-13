@@ -34,6 +34,7 @@ public class EventLog implements Iterable<Event> {
      * (Singleton Design Pattern)
      * @return  instance of EventLog
      */
+    // MODIFIES: EventLog (the class)
     // EFFECTS: get instance of EventLog, creates it if it doesn't already exist
     public static EventLog getInstance() {
         if (theLog == null) {
