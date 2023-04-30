@@ -48,6 +48,9 @@ I would also create an interface called Window that the concrete class ViewWindo
 
 In my FoodGuideGUI constructor, I would also set up 2 more helper methods to group together the lines of code that are related to the same effect to improve readability. So I would group lines 55-59 to extract a helper method called setUpFrame and group lines 65-69 to extract another helper method called instantiateFields.
 
+## Tech Stack
+Java, Java Swing
+
 ## Notes
 
 ***My UI package was adapted from the following sources where indicated***
