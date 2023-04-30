@@ -12,8 +12,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 // Food guide application
-// using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp where indicated
-// and using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
+
 public class FoodGuideApp {
     private static final String JSON_STORE = "./data/foodguide.json";
 
@@ -25,8 +24,6 @@ public class FoodGuideApp {
 
     // EFFECTS: construct FoodGuide and runs the food guide app
     //          if file can't be found, throws FileNotFoundException
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public FoodGuideApp() throws FileNotFoundException {
         fg = new FoodGuide("Kevin's Food Guide");
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -36,8 +33,6 @@ public class FoodGuideApp {
 
     // MODIFIES: this
     // EFFECTS: processes user input
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void runFoodGuide() {
         boolean keepGoing = true;
         String command = null;
@@ -61,8 +56,6 @@ public class FoodGuideApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void processCommand(String command) {
         if (command.equals("view")) {
             viewFoodLocations();
@@ -78,8 +71,6 @@ public class FoodGuideApp {
     }
 
     // EFFECTS: displays menu of options to user
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tView");
@@ -95,7 +86,6 @@ public class FoodGuideApp {
     //          - if name is found in food guide, print details about food location
     //          and process user command to update visit status of food location or remove the food location
     //          - if name isn't found in food guide, prompt user to enter another one
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void viewFoodLocations() {
         while (true) {
             System.out.println("Number of locations: " + fg.length());
@@ -165,7 +155,6 @@ public class FoodGuideApp {
     }
 
     // EFFECTS: saves the FoodGuide to file
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void saveFoodGuide() {
         try {
             jsonWriter.open();
@@ -179,7 +168,6 @@ public class FoodGuideApp {
 
     // MODIFIES: this
     // EFFECTS: loads FoodGuide from file
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void loadFoodGuide() {
         try {
             fg = jsonReader.read();
@@ -192,7 +180,6 @@ public class FoodGuideApp {
     // EFFECTS: return food location if given input matches a food location's name
     //          else return null
     //          if 'back' is entered, throws BackException
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private FoodLocation selectFoodLocation() throws BackException {
         String selection = "";
 
@@ -214,7 +201,6 @@ public class FoodGuideApp {
 
     // REQUIRES: selected is not null
     // EFFECTS: displays details of given food location
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/TellerApp
     private void printDetails(FoodLocation selected) {
         System.out.println("Here are the details of " + selected.getName());
         System.out.println("\t Neighbourhood: " + selected.getNeighborhood());

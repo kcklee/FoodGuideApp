@@ -13,7 +13,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 // Represents a GUI version of a food guide application
-// using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
 public class FoodGuideGUI extends JFrame implements ActionListener, WindowListener {
 
     private JPanel panel1;
@@ -49,7 +48,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener, WindowListen
 
     // EFFECTS: construct a FoodGuideGUI with a food guide and GUI components
     //          if file can't be found, throws FileNotFoundException
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public FoodGuideGUI() throws FileNotFoundException {
 
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -168,7 +166,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener, WindowListen
     // MODIFIES: this
     // EFFECTS: - loads FoodGuide from file
     //          - displays confirmation pop-up message if successful, else displays error message
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void loadFoodGuide() {
         try {
             fg = jsonReader.read();
@@ -181,7 +178,6 @@ public class FoodGuideGUI extends JFrame implements ActionListener, WindowListen
 
     // EFFECTS: - saves the FoodGuide to file
     //          - displays confirmation pop-up message if successful, else displays error message
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private void saveFoodGuide() {
         try {
             jsonWriter.open();

@@ -5,7 +5,6 @@ import persistence.Writable;
 
 // Represents a food location that has a name, neighbourhood, type, website
 // and indicates whether it has been visited or not
-// using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
 public class FoodLocation implements Writable {
 
     private String name;
@@ -23,10 +22,10 @@ public class FoodLocation implements Writable {
         this.website = website;
         this.haveVisited = haveVisited;
     }
-    
+
     // EFFECTS: constructs a JSON Object with the different details of each food location
     //          and returns the JSON object
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -68,7 +67,6 @@ public class FoodLocation implements Writable {
     // EFFECTS: set whether the food location has been visited already
     public void setHaveVisited(boolean haveVisited) {
         this.haveVisited = haveVisited;
-
     }
 
     // getters

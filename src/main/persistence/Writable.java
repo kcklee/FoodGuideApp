@@ -2,8 +2,7 @@ package persistence;
 
 import org.json.JSONObject;
 
-// Defines behaviour that writables must implement
-// using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+// Defines behaviour that Writable must implement
 public interface Writable {
     // EFFECTS: returns this as JSON object
     JSONObject toJson();

@@ -2,18 +2,18 @@
     "name": "Kevin's Food Guide",
     "foodLocations": [
         {
-            "website": "www.pokeritto.com",
-            "neighbourhood": "Downtown",
-            "name": "Pokeritto",
-            "haveVisited": true,
-            "type": "Poke Bowls"
+            "website": "https://sushicali.ca/",
+            "neighbourhood": "Mt. Pleasant",
+            "name": "Sushi California",
+            "haveVisited": false,
+            "type": "Sushi"
         },
         {
-            "website": "www.sharetea.com",
-            "neighbourhood": "Mt. Pleasant",
-            "name": "Sharetea",
-            "haveVisited": false,
-            "type": "Bubble Tea"
+            "website": "https://tacomio.ca/",
+            "neighbourhood": "UBC",
+            "name": "Tacomio",
+            "haveVisited": true,
+            "type": "Mexican"
         }
     ]
 }

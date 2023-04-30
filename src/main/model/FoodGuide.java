@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Represents a collection of food locations to try
-// using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo where indicated
 public class FoodGuide implements Writable {
 
     private String name;
@@ -64,7 +63,6 @@ public class FoodGuide implements Writable {
 
     // EFFECTS: constructs a JSON Object with the name of the food guide and food locations (as a JSON array)
     //          and returns the JSON object
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -74,7 +72,6 @@ public class FoodGuide implements Writable {
     }
 
     // EFFECTS: returns food locations in this food guide as a JSON array
-    // using code adapted from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     private JSONArray foodLocationsToJson() {
         JSONArray jsonArray = new JSONArray();
 
